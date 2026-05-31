@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Ring Ceremony Celebration - Kashfull & Arshiya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --botanical: #1E4631;       
@@ -23,92 +23,78 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* Strict Mobile Viewport Constraint */
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #DDE6E1;
             background-image: radial-gradient(circle at center, #F4F7F5 0%, #C8D5CE 100%);
             color: var(--text-main);
+            width: 100vw;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
+            align-items: flex-start;
+            padding: 24px 12px;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* --- THE MAJESTIC ANGELIC WINGS BACKDROP --- */
-        .wings-viewport-wrapper {
-            position: absolute;
-            width: 1000px;
-            height: 700px;
-            top: calc(50% - 350px);
-            left: calc(50% - 500px);
-            z-index: 0;
+        /* --- MOBILE FLOATING ANGELS ANIMATION LAYER --- */
+        .ambient-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .majestic-wing {
-            width: 460px;
-            height: 100%;
-            opacity: 0;
-            filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12));
+        .floating-angel {
+            position: absolute;
+            bottom: -50px;
+            fill: rgba(197, 160, 89, 0.22);
+            filter: drop-shadow(0 2px 5px rgba(197, 160, 89, 0.15));
+            animation: floatUpward 12s linear infinite;
         }
 
-        .wing-left-panel {
-            transform: scale(0.15) rotate(-40deg) translateX(300px);
-            transform-origin: right center;
+        @keyframes floatUpward {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(50px) rotate(15deg) scale(1);
+                opacity: 0;
+            }
         }
 
-        .wing-right-panel {
-            transform: scale(0.15) rotate(40deg) translateX(-300px);
-            transform-origin: left center;
-        }
-
-        .unrolled-state .wing-left-panel {
-            opacity: 0.95;
-            transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
-            animation: divineHoverLeft 8s ease-in-out infinite alternate 6.5s;
-        }
-
-        .unrolled-state .wing-right-panel {
-            opacity: 0.95;
-            transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
-            animation: divineHoverRight 8s ease-in-out infinite alternate 6.5s;
-        }
-
-        @keyframes divineHoverLeft {
-            0% { transform: rotate(0deg) translateY(0); filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12)); }
-            100% { transform: rotate(-2deg) translateY(-12px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
-        }
-        @keyframes divineHoverRight {
-            0% { transform: rotate(0deg) translateY(0); filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12)); }
-            100% { transform: rotate(2deg) translateY(-12px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
-        }
-
-        /* --- THE ROYAL PARCHMENT MECHANICAL ARCHITECTURE --- */
+        /* --- MOBILE SCROLL ARCHITECTURE --- */
         .scroll-outer-wrapper {
-            max-width: 540px;
             width: 100%;
+            max-width: 480px;
             z-index: 1;
             position: relative;
-            filter: drop-shadow(0 30px 60px rgba(30, 70, 49, 0.2));
+            filter: drop-shadow(0 15px 35px rgba(30, 70, 49, 0.15));
+            margin: 0 auto;
         }
 
-        /* Craftily sculpted vintage metallic scroll handles with engraved calligraphic texture */
         .scroll-roller {
-            height: 32px;
+            height: 30px;
             background: linear-gradient(180deg, #3A2D13 0%, #5C4724 25%, #A8833C 50%, #5C4724 75%, #231B0B 100%);
             border-top: 1px solid rgba(255, 230, 170, 0.35);
             border-bottom: 2px solid #1A1307;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 4px 12px rgba(0,0,0,0.35);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 3px 8px rgba(0,0,0,0.3);
             position: relative;
             z-index: 3;
             display: flex;
@@ -116,70 +102,55 @@
             justify-content: center;
             overflow: hidden;
         }
-
-        /* The subtle Quranic/Arabic calligraphy texture seamlessly blended into the gold handle metal */
-        .scroll-roller::content {
-            pointer-events: none;
-        }
         
         .engraved-calligraphy {
             font-family: 'Amiri', serif;
-            font-size: 15px;
+            font-size: 14px;
             color: #FFFFE0;
             opacity: 0.18;
             white-space: nowrap;
-            letter-spacing: 4px;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+            letter-spacing: 3px;
             user-select: none;
         }
 
-        /* Elaborate side knobs/filigree caps for handles */
+        /* Touch-safe compact side caps */
         .scroll-roller::before, .scroll-roller::after {
             content: '';
             position: absolute;
-            top: -7px; 
-            width: 24px; 
-            height: 46px;
+            top: -6px; 
+            width: 16px; 
+            height: 42px;
             background: radial-gradient(circle at center, #F3E0B5 0%, #C5A059 40%, #7A5E2A 85%, #423111 100%);
-            border: 2px solid #8E6E32;
-            border-radius: 6px;
-            box-shadow: 
-                0 6px 12px rgba(0,0,0,0.4),
-                inset 0 1px 3px rgba(255,255,255,0.4);
+            border: 1.5px solid #8E6E32;
+            border-radius: 4px;
         }
-        .scroll-roller::before { 
-            left: -14px; 
-            border-right: 3px double #4A3713;
-        }
-        .scroll-roller::after { 
-            right: -14px; 
-            border-left: 3px double #4A3713;
-        }
+        .scroll-roller::before { left: -8px; border-right: 2px double #4A3713; }
+        .scroll-roller::after { right: -8px; border-left: 2px double #4A3713; }
 
         .scroll-inner-content {
             background: linear-gradient(135deg, var(--pure-ivory) 0%, var(--soft-blush) 100%);
-            border-left: 1px solid rgba(197, 160, 89, 0.38);
-            border-right: 1px solid rgba(197, 160, 89, 0.38);
-            padding: 0 clamp(20px, 5vw, 40px);
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+            border-right: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 0 16px;
             max-height: 0px; 
             opacity: 0;
             overflow: hidden;
-            transition: max-height 6.5s var(--ease-scroll-graceful), opacity 4s var(--ease-scroll-graceful), padding 6.5s var(--ease-scroll-graceful);
+            transition: max-height 5s var(--ease-scroll-graceful), opacity 3.5s var(--ease-scroll-graceful), padding 5s var(--ease-scroll-graceful);
         }
 
         .unrolled-state .scroll-inner-content {
-            max-height: 3500px;
+            max-height: 3800px;
             opacity: 1;
-            padding: clamp(55px, 10vw, 75px) clamp(20px, 5vw, 40px);
+            padding: 45px 16px;
         }
 
         .scroll-inner-content::before {
             content: '';
             position: absolute;
-            top: 25px; right: 15px; bottom: 25px; left: 15px;
+            top: 16px; right: 10px; bottom: 16px; left: 10px;
             border: 1px solid var(--gold-leaf);
             border-radius: 4px;
-            opacity: 0.25;
+            opacity: 0.2;
             pointer-events: none;
         }
 
@@ -187,31 +158,30 @@
             text-align: center;
         }
 
-        /* --- TYPOGRAPHY COMPOSITIONS --- */
+        /* --- ROMANTIC TYPOGRAPHY COMPOSITIONS --- */
         .islamic-crest-svg {
-            width: 28px;
-            height: 28px;
-            margin-bottom: 22px;
+            width: 24px;
+            height: 24px;
+            margin-bottom: 16px;
             display: inline-block;
-            filter: drop-shadow(0 2px 4px rgba(142, 110, 50, 0.2));
         }
 
         .blessing-banner {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 3.5px;
+            letter-spacing: 3px;
             color: var(--gold-dark);
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .bismillah-container {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .arabic-bismillah {
             font-family: 'Amiri', serif;
-            font-size: clamp(30px, 6.5vw, 36px);
+            font-size: 28px;
             color: var(--botanical);
             line-height: 1.1;
             margin-bottom: 4px;
@@ -220,184 +190,172 @@
         .translation-sub {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
-        /* --- STRICT VERTICAL STACK ARCHITECTURE FOR HOSTS & HERITAGE --- */
         .hosts-group {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(18px, 4.5vw, 21px);
+            font-size: 17px;
             color: var(--text-main);
-            line-height: 1.4;
         }
 
         .parent-stack {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             width: 100%;
-            margin: 8px 0;
+            margin: 6px 0;
         }
 
         .parent-name {
             font-weight: 700;
             color: var(--botanical);
             display: block;
-            margin: 4px 0;
-            letter-spacing: 0.3px;
         }
 
         .parent-connector {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 18px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
             color: var(--gold-leaf);
+            line-height: 0.8;
             margin: 2px 0;
-            display: block;
-            line-height: 1;
         }
 
         .conjunction {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 15px;
             color: var(--gold-dark);
-            margin: 18px 0;
+            margin: 14px 0;
             display: block;
         }
 
         .invitation-statement {
-            font-size: 11.5px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin: 35px 0 20px 0;
+            margin: 30px 0 15px 0;
             font-weight: 500;
         }
 
         .names-display-box {
-            margin: 25px 0;
-            padding: 10px 0;
+            margin: 20px 0;
         }
 
+        /* Radiant Love Vibe Callout Name Styling */
         .person-glorious-name {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(34px, 7vw, 44px);
-            font-weight: 700;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
             color: var(--botanical);
-            letter-spacing: 0.5px;
             line-height: 1.1;
             display: block;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
         }
 
         .and-ornament {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 28px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
             color: var(--gold-leaf);
-            margin: 6px 0;
+            margin: -4px 0;
             display: block;
-            font-weight: 400;
         }
 
         .celebration-tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 15px;
+            font-size: 14px;
             color: var(--gold-dark);
-            margin-top: 14px;
-            margin-bottom: 35px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            padding: 0 8px;
         }
 
         .quranic-centerpiece-card {
             background: linear-gradient(180deg, rgba(232, 240, 236, 0.6) 0%, rgba(218, 232, 225, 0.4) 100%);
-            border-left: 3px solid var(--botanical);
-            border-right: 3px solid var(--botanical);
-            color: var(--text-main);
-            padding: 30px 25px;
-            margin: 40px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(30, 70, 49, 0.02);
+            border-left: 2px solid var(--botanical);
+            border-right: 2px solid var(--botanical);
+            padding: 20px 15px;
+            margin: 35px 0;
+            border-radius: 10px;
         }
 
         .scholarly-arabic {
             font-family: 'Amiri', serif;
-            font-size: clamp(26px, 6vw, 30px);
+            font-size: 24px;
             color: var(--botanical);
-            margin-bottom: 12px;
-            line-height: 1.3;
+            margin-bottom: 8px;
         }
 
         .scholarly-translation {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(13.5px, 3vw, 15px);
-            line-height: 1.6;
+            font-size: 13.5px;
+            line-height: 1.5;
             font-style: italic;
-            font-weight: 400;
         }
 
         .scholarly-source {
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 12px;
+            margin-top: 10px;
             color: var(--gold-dark);
             font-weight: 700;
         }
 
         .logistics-title-bar {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2.5px;
             color: var(--gold-dark);
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
+        /* Exclusively formatted vertical stack layout for mobile views */
         .logistics-flex-row {
             display: flex;
+            flex-direction: column;
             background: rgba(232, 240, 236, 0.45);
             border: 1px solid rgba(30, 70, 49, 0.06);
-            border-radius: 14px;
-            padding: 18px 10px;
+            border-radius: 12px;
+            padding: 14px 0;
             margin-bottom: 25px;
         }
 
         .logistics-column-unit {
-            flex: 1;
+            padding: 6px 0;
         }
         .logistics-column-unit:first-child {
-            border-right: 1px solid rgba(30, 70, 49, 0.1);
+            border-bottom: 1px solid rgba(30, 70, 49, 0.1);
+            padding-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .logistics-column-unit h4 {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            margin-bottom: 6px;
-            font-weight: 500;
+            margin-bottom: 4px;
         }
 
         .logistics-column-unit p {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(15px, 3.5vw, 17px);
+            font-size: 16px;
             font-weight: 700;
             color: var(--botanical);
         }
 
         .venue-wrapper {
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-main);
-            margin-bottom: 40px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 35px;
         }
         .venue-wrapper strong {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(16px, 3.5vw, 19px);
+            font-size: 17px;
             color: var(--botanical);
             display: inline-block;
             margin-bottom: 4px;
@@ -406,201 +364,110 @@
         .btn-maps {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             margin-top: 12px;
-            padding: 8px 18px;
-            background: transparent;
+            padding: 8px 16px;
             border: 1px solid var(--gold-leaf);
             color: var(--gold-dark);
             text-decoration: none;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-        }
-        .btn-maps:hover {
-            background: rgba(197, 160, 89, 0.1);
-            color: var(--botanical);
-            border-color: var(--botanical);
+            letter-spacing: 1px;
         }
 
-        /* --- HERITAGE FOOTER ALIGNMENT SYSTEM --- */
+        /* Lineage Layout Cleaned up exclusively for Mobile Display Heights */
         .heritage-section {
             display: flex;
-            justify-content: space-between;
-            gap: 24px;
-            border-top: 1px solid rgba(197, 160, 89, 0.25);
-            padding-top: 25px;
-            margin-top: 35px;
+            flex-direction: column;
+            gap: 22px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            padding-top: 20px;
+            margin-top: 30px;
         }
 
         .heritage-pillar {
-            width: 50%;
-        }
-
-        .heritage-pillar-left {
-            text-align: left;
-        }
-
-        .heritage-pillar-right {
-            text-align: right;
+            width: 100%;
+            text-align: center;
         }
 
         .heritage-section h4 {
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--gold-dark);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 700;
-            border-bottom: 1px solid rgba(30, 70, 49, 0.06);
-            padding-bottom: 4px;
         }
 
         .heritage-section .family-vertical-stack {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 2px;
-        }
-        
-        .heritage-pillar-left .family-vertical-stack {
-            align-items: flex-start;
-        }
-
-        .heritage-pillar-right .family-vertical-stack {
-            align-items: flex-end;
         }
 
         .heritage-section .patriarch, 
         .heritage-section .matriarch {
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--botanical);
-            display: block;
         }
         
         .heritage-section .footer-ampersand {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 15px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 20px;
             color: var(--gold-leaf);
-            line-height: 1.2;
-            display: block;
+            line-height: 0.8;
         }
 
         .geo-marker-tag {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
-            margin-top: 8px;
+            margin-top: 4px;
             font-style: italic;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .blessing-closer {
-            margin-top: 45px;
+            margin-top: 40px;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 14.5px;
+            font-size: 14px;
             color: var(--botanical);
-            line-height: 1.5;
+            line-height: 1.4;
+            padding: 0 10px;
         }
 
         .btn-action-container {
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
         .btn-celebratory {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 40px;
+            width: 85%;
+            padding: 14px 0;
             background: linear-gradient(135deg, var(--botanical) 0%, #2A5A41 100%);
             color: var(--pure-ivory);
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 11.5px;
+            border-radius: 25px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(30, 70, 49, 0.15);
-            transition: all 0.4s;
-            border: none;
-        }
-
-        .btn-celebratory:hover {
-            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-leaf) 100%);
-            color: var(--pure-ivory);
-            box-shadow: 0 15px 35px rgba(142, 110, 50, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* --- RESPONSIVE MEDIA ENVIRONMENT BREAKPOINTS --- */
-        @media (max-width: 1024px) {
-            .wings-viewport-wrapper {
-                width: 100vw;
-                left: 0;
-                transform: scale(0.68);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 40px 10px; }
-            .wings-viewport-wrapper { display: none; } 
-            .scroll-inner-content { padding: 0 16px; }
-            .unrolled-state .scroll-inner-content { padding: 50px 16px; }
-            
-            .heritage-section { flex-direction: column; gap: 25px; }
-            .heritage-pillar { width: 100%; }
-            .heritage-pillar-left, .heritage-pillar-right { text-align: center; }
-            .heritage-pillar-left .family-vertical-stack, .heritage-pillar-right .family-vertical-stack { align-items: center; }
-            .logistics-flex-row { flex-direction: column; padding: 10px 0; }
-            .logistics-column-unit:first-child { border-right: none; border-bottom: 1px solid rgba(30, 70, 49, 0.1); padding-bottom: 12px; margin-bottom: 12px; }
+            box-shadow: 0 8px 20px rgba(30, 70, 49, 0.15);
         }
     </style>
 </head>
 <body id="invitationBody">
 
-<div class="wings-viewport-wrapper">
-    <!-- Left Wing -->
-    <svg class="majestic-wing wing-left-panel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
-        <defs>
-            <linearGradient id="divineGold" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#EAD59A" />
-                <stop offset="40%" stop-color="#C5A059" />
-                <stop offset="100%" stop-color="#70521B" />
-            </linearGradient>
-        </defs>
-        <g fill="none" stroke="url(#divineGold)" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M380,80 C330,40 240,30 140,110 C60,175 20,270 15,360 C10,440 45,510 110,540 C150,560 210,510 260,440 C320,350 365,220 380,80 Z" stroke-width="2.5" opacity="0.9"/>
-            <path d="M360,130 C300,90 220,95 140,180 C80,245 45,330 45,410 C45,480 85,510 130,470 C180,425 240,320 310,210" stroke-width="2" opacity="0.8"/>
-            <path d="M340,180 C280,140 210,150 145,235 C90,305 65,385 70,450 C75,490 110,480 150,430 C200,370 260,270 340,180 Z" stroke-width="1.8" opacity="0.75"/>
-            <path d="M320,230 C260,200 200,210 150,290 C110,350 95,420 105,470 C140,460 190,395 240,310" stroke-width="1.5" opacity="0.65"/>
-            <path d="M300,280 C250,250 200,260 160,330 C125,390 115,440 140,455 C170,430 210,370 260,300" stroke-width="1.2" opacity="0.55"/>
-            <path d="M120,120 C70,180 35,260 25,350" stroke-width="1.5" opacity="0.4"/>
-            <path d="M90,170 C50,235 25,320 20,410" stroke-width="1.2" opacity="0.3"/>
-        </g>
-    </svg>
-
-    <!-- Right Wing -->
-    <svg class="majestic-wing wing-right-panel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
-        <g fill="none" stroke="url(#divineGold)" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20,80 C70,40 160,30 260,110 C340,175 380,270 385,360 C390,440 355,510 290,540 C250,560 190,510 140,440 C80,350 35,220 20,80 Z" stroke-width="2.5" opacity="0.9"/>
-            <path d="M40,130 C100,90 180,95 260,180 C320,245 355,330 355,410 C355,480 315,510 270,470 C220,425 160,320 90,210" stroke-width="2" opacity="0.8"/>
-            <path d="M60,180 C120,140 190,150 255,235 C310,305 335,385 330,450 C325,490 290,480 250,430 C200,370 140,270 60,180 Z" stroke-width="1.8" opacity="0.75"/>
-            <path d="M80,230 C140,200 200,210 250,290 C290,350 305,420 295,470 C260,460 210,395 160,310" stroke-width="1.5" opacity="0.65"/>
-            <path d="M100,280 C150,250 200,260 240,330 C275,390 285,440 260,455 C230,430 190,370 140,300" stroke-width="1.2" opacity="0.55"/>
-            <path d="M280,120 C330,180 365,260 375,350" stroke-width="1.5" opacity="0.4"/>
-            <path d="M310,170 C350,235 375,320 380,410" stroke-width="1.2" opacity="0.3"/>
-        </g>
-    </svg>
-</div>
+<!-- Floating Little Angels Ambient Layer Context Setup -->
+<div class="ambient-layer" id="ambientContainer"></div>
 
 <div class="scroll-outer-wrapper" id="royalScroll">
-    <!-- Crafted Top Roller (Engraved text says: Glory be to Him) -->
+    <!-- Crafted Top Roller with Engraved Arabic -->
     <div class="scroll-roller">
         <span class="engraved-calligraphy" dir="rtl">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span>
     </div>
@@ -608,7 +475,6 @@
     <div class="scroll-inner-content">
         <div class="text-alignment-canvas">
             
-            <!-- Pure SVG vector path centerpiece to completely avoid cross/box rendering bugs on older mobile phone devices -->
             <svg class="islamic-crest-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#C5A059"/>
             </svg>
@@ -620,7 +486,7 @@
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
-            <!-- Parent Architecture: Precision Stacked Vertically -->
+            <!-- Precision Mobile Family Stacks -->
             <section class="hosts-group">
                 <div class="parent-stack">
                     <span class="parent-name">Mr. Karamat Ali Khan</span>
@@ -638,12 +504,12 @@
             </section>
 
             <p class="invitation-statement">cordially invite you to join them in celebrating the</p>
-            <h3 style="font-size: 14px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
+            <h3 style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
             
             <main class="names-display-box">
-                <span class="person-glorious-name">KASHFULL ORRA</span>
+                <span class="person-glorious-name">Kashfull Orra</span>
                 <span class="and-ornament">&</span>
-                <span class="person-glorious-name">ARSHIYA ANJUM</span>
+                <span class="person-glorious-name">Arshiya Anjum</span>
                 <p class="celebration-tagline">“Two hearts, one blessed beginning of companionship and shared purpose”</p>
             </main>
 
@@ -668,7 +534,7 @@
                 </div>
 
                 <div class="venue-wrapper">
-                    <div class="logistics-title-bar" style="margin-bottom: 6px;">Venue</div>
+                    <div class="logistics-title-bar" style="margin-bottom: 4px;">Venue</div>
                     <strong>Pramod Convention & Club Resort</strong><br>
                     Mahanadi Ring Road, Bidanashi, Chahta,<br>
                     Cuttack, Odisha – 753008<br>
@@ -679,9 +545,9 @@
                 </div>
             </section>
 
-            <!-- Lineage Columns -->
+            <!-- Lineage Links -->
             <section class="heritage-section">
-                <div class="heritage-pillar heritage-pillar-left">
+                <div class="heritage-pillar">
                     <h4>Groom's Family</h4>
                     <div class="family-vertical-stack">
                         <span class="patriarch">Mr. Karamat Ali Khan</span>
@@ -690,7 +556,7 @@
                     </div>
                     <span class="geo-marker-tag">📍 Rourkela, Odisha</span>
                 </div>
-                <div class="heritage-pillar heritage-pillar-right">
+                <div class="heritage-pillar">
                     <h4>Bride's Family</h4>
                     <div class="family-vertical-stack">
                         <span class="patriarch">Mr. Sk Allauddin Ali</span>
@@ -714,18 +580,47 @@
         </div>
     </div>
 
-    <!-- Crafted Bottom Roller (Engraved text says: Praise be to Allah) -->
+    <!-- Crafted Bottom Roller with Engraved Arabic -->
     <div class="scroll-roller">
         <span class="engraved-calligraphy" dir="rtl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
     </div>
 </div>
 
 <script>
+    // Unroll Scroll Engine
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
-        }, 500); 
+        }, 400); 
+        generateMobileAngels();
     });
+
+    // Dynamic High-Performance Mobile Angel Generator
+    function generateMobileAngels() {
+        const container = document.getElementById('ambientContainer');
+        const count = 6; // Low footprint setup specifically optimized for mobile CPU/GPU rendering
+        
+        // Inline raw SVG vector path configuration for custom floating angel figures
+        const angelPath = "M12,2C6.5,2,2,6.5,2,12c0,3.5,1.8,6.6,4.6,8.4C6.5,20.1,6.4,19.7,6.4,19.3c0-2,1.2-3.8,3-4.6c-0.9-0.9-1.4-2.1-1.4-3.5c0-2.8,2.2-5,5-5s5,2.2,5,5c0,1.4-0.5,2.6-1.4,3.5c1.8,0.8,3,2.6,3,4.6c0,0.4-0.1,0.8-0.2,1.1C20.2,18.6,22,15.5,22,12C22,6.5,17.5,2,12,2z M6.1,13.1c-1.4-0.4-2.6-1.2-3.4-2.4c1.1-0.2,2.3,0.1,3.1,0.9C6,12,6,12.6,6.1,13.1z M17.9,13.1c0.1-0.5,0.1-1.1,0.3-1.6c0.8-0.8,2-1.1,3.1-0.9C20.5,11.9,19.3,12.7,17.9,13.1z";
+
+        for (let i = 0; i < count; i++) {
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "0 0 24 24");
+            svg.classList.add("floating-angel");
+            
+            // Randomize position tracking layout elements
+            svg.style.left = `${Math.random() * 90}%`;
+            svg.style.width = `${16 + Math.random() * 12}px`;
+            svg.style.height = svg.style.width;
+            svg.style.animationDelay = `${Math.random() * 10}s`;
+            svg.style.animationDuration = `${10 + Math.random() * 6}s`;
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", angelPath);
+            svg.appendChild(path);
+            container.appendChild(svg);
+        }
+    }
 </script>
 
 </body>
