@@ -15,7 +15,7 @@
             --pure-ivory: #FFFFFF;      
             --soft-blush: #FAF6EE;      
             --text-main: #2A3630;       
-            /* Calibrated to a state of complete fluid weightlessness (6.5s runtime) */
+            --text-muted: #5A6560;
             --ease-scroll-graceful: cubic-bezier(0.22, 1, 0.25, 1);
         }
 
@@ -70,7 +70,6 @@
             transform-origin: left center;
         }
 
-        /* Perfectly matched to sync with the ultra-graceful 6.5-second scroll deployment */
         .unrolled-state .wing-left-panel {
             opacity: 0.95;
             transform: scale(1) rotate(0deg) translateX(0);
@@ -129,12 +128,11 @@
             max-height: 0px; 
             opacity: 0;
             overflow: hidden;
-            /* Slipped into an ultra-graceful decelerating curve spanning 6.5s total */
             transition: max-height 6.5s var(--ease-scroll-graceful), opacity 4s var(--ease-scroll-graceful), padding 6.5s var(--ease-scroll-graceful);
         }
 
         .unrolled-state .scroll-inner-content {
-            max-height: 3000px;
+            max-height: 3500px;
             opacity: 1;
             padding: clamp(55px, 10vw, 75px) clamp(20px, 5vw, 40px);
         }
@@ -190,37 +188,39 @@
             color: var(--text-muted);
         }
 
-        /* --- PARENT DISPLAY RE-ENGINEERED FOR PERFECT ONE-BELOW-THE-OTHER ALIGNMENT --- */
+        /* --- STRICT VERTICAL STACK ARCHITECTURE FOR HOSTS & HERITAGE --- */
         .hosts-group {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(18px, 4.2vw, 20px);
+            font-size: clamp(18px, 4.5vw, 21px);
             color: var(--text-main);
             line-height: 1.4;
         }
 
-        /* Explicit stacking mechanics with isolated spacing */
         .parent-stack {
-            display: inline-flex;
+            display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            margin: 4px 0;
+            margin: 8px 0;
         }
 
         .parent-name {
             font-weight: 700;
             color: var(--botanical);
             display: block;
-            margin: 2px 0;
+            margin: 4px 0;
+            letter-spacing: 0.3px;
         }
 
         .parent-connector {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 16px;
+            font-size: 18px;
             color: var(--gold-leaf);
-            margin: 1px 0;
+            margin: 2px 0;
             display: block;
+            line-height: 1;
         }
 
         .conjunction {
@@ -229,7 +229,7 @@
             font-size: 16px;
             font-weight: 400;
             color: var(--gold-dark);
-            margin: 14px 0;
+            margin: 18px 0;
             display: block;
         }
 
@@ -390,7 +390,7 @@
             border-color: var(--botanical);
         }
 
-        /* --- HERITAGE FOOTER ALIGNMENT INTEGRITY LOCK (MANDATE CHECK) --- */
+        /* --- HERITAGE FOOTER ALIGNMENT SYSTEM --- */
         .heritage-section {
             display: flex;
             justify-content: space-between;
@@ -408,7 +408,6 @@
             text-align: left;
         }
 
-        /* Strict right-side tracking alignment lock for Cuttack, Odisha block */
         .heritage-pillar-right {
             text-align: right;
         }
@@ -418,28 +417,47 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--gold-dark);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-weight: 700;
             border-bottom: 1px solid rgba(30, 70, 49, 0.06);
             padding-bottom: 4px;
         }
 
-        .heritage-section p {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-main);
+        .heritage-section .family-vertical-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
         
+        .heritage-pillar-left .family-vertical-stack {
+            align-items: flex-start;
+        }
+
+        .heritage-pillar-right .family-vertical-stack {
+            align-items: flex-end;
+        }
+
         .heritage-section .patriarch, 
         .heritage-section .matriarch {
+            font-size: 14.5px;
             font-weight: 700;
             color: var(--botanical);
+            display: block;
+        }
+        
+        .heritage-section .footer-ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: var(--gold-leaf);
+            line-height: 1.2;
+            display: block;
         }
 
         .geo-marker-tag {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 8px;
             font-style: italic;
             display: inline-flex;
             align-items: center;
@@ -495,14 +513,14 @@
 
         @media (max-width: 600px) {
             body { padding: 40px 10px; }
-            .wings-viewport-wrapper { display: none; } /* Kept clean on tiny mobile layouts for absolute scroll focus */
+            .wings-viewport-wrapper { display: none; } 
             .scroll-inner-content { padding: 0 16px; }
             .unrolled-state .scroll-inner-content { padding: 50px 16px; }
             
-            /* Structural preservation updates for mobile viewport view */
             .heritage-section { flex-direction: column; gap: 25px; }
             .heritage-pillar { width: 100%; }
             .heritage-pillar-left, .heritage-pillar-right { text-align: center; }
+            .heritage-pillar-left .family-vertical-stack, .heritage-pillar-right .family-vertical-stack { align-items: center; }
             .logistics-flex-row { flex-direction: column; padding: 10px 0; }
             .logistics-column-unit:first-child { border-right: none; border-bottom: 1px solid rgba(30, 70, 49, 0.1); padding-bottom: 12px; margin-bottom: 12px; }
         }
@@ -510,7 +528,6 @@
 </head>
 <body id="invitationBody">
 
-<!-- Re-Rendered High-Fidelity Majestic Angelic Wings -->
 <div class="wings-viewport-wrapper">
     <!-- Left Wing -->
     <svg class="majestic-wing wing-left-panel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
@@ -546,7 +563,6 @@
     </svg>
 </div>
 
-<!-- Scroll Body -->
 <div class="scroll-outer-wrapper" id="royalScroll">
     <div class="scroll-roller"></div>
     
@@ -561,7 +577,7 @@
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
-            <!-- Parent Information Optimized for Stacked Alignment Across All Mobile Screens -->
+            <!-- Parent Architecture: Precision Stacked Vertically (Husband Above, Wife Below, & In-Between) -->
             <section class="hosts-group">
                 <div class="parent-stack">
                     <span class="parent-name">Mr. Karamat Ali Khan</span>
@@ -620,18 +636,24 @@
                 </div>
             </section>
 
-            <!-- Lineage Columns - Precision Aligned (Right Hand Alignment Locked for Cuttack Block) -->
+            <!-- Lineage Columns - Duplications Removed, Strictly Linear Stacked Parent Blocks -->
             <section class="heritage-section">
                 <div class="heritage-pillar heritage-pillar-left">
                     <h4>Groom's Family</h4>
-                    <p class="patriarch">Mr. Karamat Ali Khan</p>
-                    <p class="matriarch">& Mrs. Rabeya Khatoon</p>
+                    <div class="family-vertical-stack">
+                        <span class="patriarch">Mr. Karamat Ali Khan</span>
+                        <span class="footer-ampersand">&</span>
+                        <span class="matriarch">Mrs. Rabeya Khatoon</span>
+                    </div>
                     <span class="geo-marker-tag">📍 Rourkela, Odisha</span>
                 </div>
                 <div class="heritage-pillar heritage-pillar-right">
                     <h4>Bride's Family</h4>
-                    <p class="patriarch">Mr. Sk Allauddin Ali</p>
-                    <p class="matriarch">& Late Mrs. Afsana Anjum</p>
+                    <div class="family-vertical-stack">
+                        <span class="patriarch">Mr. Sk Allauddin Ali</span>
+                        <span class="footer-ampersand">&</span>
+                        <span class="matriarch">Late Mrs. Afsana Anjum</span>
+                    </div>
                     <span class="geo-marker-tag">📍 Cuttack, Odisha</span>
                 </div>
             </section>
@@ -653,7 +675,6 @@
 </div>
 
 <script>
-    // Initializer delay to smooth page handoff before triggering the 6.5s theatrical scroll layout
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
