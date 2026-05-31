@@ -42,39 +42,61 @@
             position: relative;
         }
 
-        /* --- MOBILE FLOATING ANGELS ANIMATION LAYER --- */
-        .ambient-layer {
+        /* --- HIGH PERFORMANCE TWINKLING & SHOOTING STARS --- */
+        .stars-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             pointer-events: none;
-            z-index: 0;
+            z-index: 0; /* Sits perfectly between background color and scroll container */
             overflow: hidden;
         }
 
-        .floating-angel {
+        /* Twinkling Star Base */
+        .star {
             position: absolute;
-            bottom: -50px;
-            fill: rgba(197, 160, 89, 0.22);
-            filter: drop-shadow(0 2px 5px rgba(197, 160, 89, 0.15));
-            animation: floatUpward 12s linear infinite;
+            background-color: var(--gold-leaf);
+            border-radius: 50%;
+            box-shadow: 0 0 4px 1px rgba(197, 160, 89, 0.6);
+            animation: pulseTwinkle 3s ease-in-out infinite;
+            opacity: 0;
         }
 
-        @keyframes floatUpward {
+        @keyframes pulseTwinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 8px 2px rgba(197, 160, 89, 0.8); }
+        }
+
+        /* Romantic Falling/Shooting Star Base */
+        .shooting-star {
+            position: absolute;
+            top: -10px;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(197, 160, 89, 0) 100%);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 6px #fff);
+            animation: shootAway 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes shootAway {
             0% {
-                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                transform: translateX(0) translateY(0) rotate(-35deg) scale(0);
                 opacity: 0;
             }
-            10% {
+            1% {
                 opacity: 1;
+                transform: translateX(0) translateY(0) rotate(-35deg) scale(1);
             }
-            90% {
-                opacity: 0.8;
+            10% {
+                transform: translateX(-150px) translateY(210px) rotate(-35deg) scale(1);
+                opacity: 0;
             }
             100% {
-                transform: translateY(-105vh) translateX(50px) rotate(15deg) scale(1);
+                transform: translateX(-150px) translateY(210px) rotate(-35deg) scale(0);
                 opacity: 0;
             }
         }
@@ -113,7 +135,6 @@
             user-select: none;
         }
 
-        /* Touch-safe compact side caps */
         .scroll-roller::before, .scroll-roller::after {
             content: '';
             position: absolute;
@@ -244,7 +265,6 @@
             margin: 25px 0;
         }
 
-        /* Clear, readable, beautifully romantic italic serifs for the couple */
         .person-glorious-name {
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -465,7 +485,7 @@
 </head>
 <body id="invitationBody">
 
-<div class="ambient-layer" id="ambientContainer"></div>
+<div class="stars-container" id="starfield"></div>
 
 <div class="scroll-outer-wrapper" id="royalScroll">
     <div class="scroll-roller">
@@ -588,29 +608,49 @@
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
         }, 400); 
-        generateMobileAngels();
+        initDynamicStarfield();
     });
 
-    function generateMobileAngels() {
-        const container = document.getElementById('ambientContainer');
-        const count = 6; 
-        const angelPath = "M12,2C6.5,2,2,6.5,2,12c0,3.5,1.8,6.6,4.6,8.4C6.5,20.1,6.4,19.7,6.4,19.3c0-2,1.2-3.8,3-4.6c-0.9-0.9-1.4-2.1-1.4-3.5c0-2.8,2.2-5,5-5s5,2.2,5,5c0,1.4-0.5,2.6-1.4,3.5c1.8,0.8,3,2.6,3,4.6c0,0.4-0.1,0.8-0.2,1.1C20.2,18.6,22,15.5,22,12C22,6.5,17.5,2,12,2z M6.1,13.1c-1.4-0.4-2.6-1.2-3.4-2.4c1.1-0.2,2.3,0.1,3.1,0.9C6,12,6,12.6,6.1,13.1z M17.9,13.1c0.1-0.5,0.1-1.1,0.3-1.6c0.8-0.8,2-1.1,3.1-0.9C20.5,11.9,19.3,12.7,17.9,13.1z";
-
-        for (let i = 0; i < count; i++) {
-            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svg.setAttribute("viewBox", "0 0 24 24");
-            svg.classList.add("floating-angel");
+    // High-Performance Night Sky Star System Generator
+    function initDynamicStarfield() {
+        const container = document.getElementById('starfield');
+        const starCount = 35; // Ideal density for mobile viewpoints without causing lag
+        
+        // 1. Generate Steady Twinkling Stars
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
             
-            svg.style.left = `${Math.random() * 90}%`;
-            svg.style.width = `${16 + Math.random() * 12}px`;
-            svg.style.height = svg.style.width;
-            svg.style.animationDelay = `${Math.random() * 10}s`;
-            svg.style.animationDuration = `${10 + Math.random() * 6}s`;
+            // Randomize scattering evenly across full mobile viewport
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // Subtle differences in sizing to create depth layout perception
+            const size = Math.random() * 3 + 1; 
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Vary delay times so stars don't blink together in artificial synchronization
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            star.style.animationDuration = `${2 + Math.random() * 3}s`;
+            
+            container.appendChild(star);
+        }
 
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("d", angelPath);
-            svg.appendChild(path);
-            container.appendChild(svg);
+        // 2. Generate Occasional Shooting Stars
+        const shootingStarCount = 3;
+        for (let j = 0; j < shootingStarCount; j++) {
+            const shooter = document.createElement('div');
+            shooter.classList.add('shooting-star');
+            
+            // Position them at scattered offsets on the top edge
+            shooter.style.left = `${30 + Math.random() * 60}%`;
+            shooter.style.top = `${Math.random() * 20}%`;
+            
+            // Randomize intervals to make the appearance feel natural
+            shooter.style.animationDelay = `${j * 3.5 + Math.random() * 2}s`;
+            
+            container.appendChild(shooter);
         }
     }
 </script>
