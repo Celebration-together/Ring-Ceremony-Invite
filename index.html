@@ -1,1 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Ring Ceremony Celebration - Kashfull & Arshiya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --botanical: #1E4631;       
+            --gold-leaf: #C5A059;       
+            --gold-dark: #8E6E32;       
+            --pure-ivory: #FFFFFF;      
+            --soft-blush: #FAF6EE;      
+            --text-main: #2A3630;       
+            --text-muted: #5A6560;
+            --ease-scroll-graceful: cubic-bezier(0.22, 1, 0.25, 1);
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Strict Mobile Viewport Constraint */
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #DDE6E1;
+            background-image: radial-gradient(circle at center, #F4F7F5 0%, #C8D5CE 100%);
+            color: var(--text-main);
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 12px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- MOBILE FLOATING ANGELS ANIMATION LAYER --- */
+        .ambient-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-angel {
+            position: absolute;
+            bottom: -50px;
+            fill: rgba(197, 160, 89, 0.22);
+            filter: drop-shadow(0 2px 5px rgba(197, 160, 89, 0.15));
+            animation: floatUpward 12s linear infinite;
+        }
+
+        @keyframes floatUpward {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(50px) rotate(15deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* --- MOBILE SCROLL ARCHITECTURE --- */
+        .scroll-outer-wrapper {
+            width: 100%;
+            max-width: 480px;
+            z-index: 1;
+            position: relative;
+            filter: drop-shadow(0 15px 35px rgba(30, 70, 49, 0.15));
+            margin: 0 auto;
+        }
+
+        .scroll-roller {
+            height: 30px;
+            background: linear-gradient(180deg, #3A2D13 0%, #5C4724 25%, #A8833C 50%, #5C4724 75%, #231B0B 100%);
+            border-top: 1px solid rgba(255, 230, 170, 0.35);
+            border-bottom: 2px solid #1A1307;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 3px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .engraved-calligraphy {
+            font-family: 'Amiri', serif;
+            font-size: 14px;
+            color: #FFFFE0;
+            opacity: 0.18;
+            white-space: nowrap;
+            letter-spacing: 3px;
+            user-select: none;
+        }
+
+        /* Touch-safe compact side caps */
+        .scroll-roller::before, .scroll-roller::after {
+            content: '';
+            position: absolute;
+            top: -6px; 
+            width: 16px; 
+            height: 42px;
+            background: radial-gradient(circle at center, #F3E0B5 0%, #C5A059 40%, #7A5E2A 85%, #423111 100%);
+            border: 1.5px solid #8E6E32;
+            border-radius: 4px;
+        }
+        .scroll-roller::before { left: -8px; border-right: 2px double #4A3713; }
+        .scroll-roller::after { right: -8px; border-left: 2px double #4A3713; }
+
+        .scroll-inner-content {
+            background: linear-gradient(135deg, var(--pure-ivory) 0%, var(--soft-blush) 100%);
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+            border-right: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 0 16px;
+            max-height: 0px; 
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 5s var(--ease-scroll-graceful), opacity 3.5s var(--ease-scroll-graceful), padding 5s var(--ease-scroll-graceful);
+        }
+
+        .unrolled-state .scroll-inner-content {
+            max-height: 3800px;
+            opacity: 1;
+            padding: 45px 16px;
+        }
+
+        .scroll-inner-content::before {
+            content: '';
+            position: absolute;
+            top: 16px; right: 10px; bottom: 16px; left: 10px;
+            border: 1px solid var(--gold-leaf);
+            border-radius: 4px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .text-alignment-canvas {
+            text-align: center;
+        }
+
+        /* --- ROMANTIC TYPOGRAPHY COMPOSITIONS --- */
+        .islamic-crest-svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .blessing-banner {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .bismillah-container {
+            margin-bottom: 30px;
+        }
+
+        .arabic-bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 28px;
+            color: var(--botanical);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .translation-sub {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .hosts-group {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            color: var(--text-main);
+        }
+
+        .parent-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin: 6px 0;
+        }
+
+        .parent-name {
+            font-weight: 700;
+            color: var(--botanical);
+            display: block;
+        }
+
+        .parent-connector {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: var(--gold-leaf);
+            line-height: 0.8;
+            margin: 2px 0;
+        }
+
+        .conjunction {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: var(--gold-dark);
+            margin: 14px 0;
+            display: block;
+        }
+
+        .invitation-statement {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin: 30px 0 15px 0;
+            font-weight: 500;
+        }
+
+        .names-display-box {
+            margin: 25px 0;
+        }
+
+        /* Clear, highly-legible, yet elegantly romantic font style for the couple */
+        .person-glorious-name {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 36px;
+            color: var(--botanical);
+            line-height: 1.2;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        .and-ornament {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 26px;
+            color: var(--gold-leaf);
+            margin: 4px 0;
+            display: block;
+        }
+
+        .celebration-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gold-dark);
+            margin-top: 14px;
+            margin-bottom: 30px;
+            padding: 0 8px;
+        }
+
+        .quranic-centerpiece-card {
+            background: linear-gradient(180deg, rgba(232, 240, 236, 0.6) 0%, rgba(218, 232, 225, 0.4) 100%);
+            border-left: 2px solid var(--botanical);
+            border-right: 2px solid var(--botanical);
+            padding: 20px 15px;
+            margin: 35px 0;
+            border-radius: 10px;
+        }
+
+        .scholarly-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: var(--botanical);
+            margin-bottom: 8px;
+        }
+
+        .scholarly-translation {
+            font-family: 'Playfair Display', serif;
+            font-size: 13.5px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .scholarly-source {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            color: var(--gold-dark);
+            font-weight: 700;
+        }
+
+        .logistics-title-bar {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .logistics-flex-row {
+            display: flex;
+            flex-direction: column;
+            background: rgba(232, 240, 236, 0.45);
+            border: 1px solid rgba(30, 70, 49, 0.06);
+            border-radius: 12px;
+            padding: 14px 0;
+            margin-bottom: 25px;
+        }
+
+        .logistics-column-unit {
+            padding: 6px 0;
+        }
+        .logistics-column-unit:first-child {
+            border-bottom: 1px solid rgba(30, 70, 49, 0.1);
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+
+        .logistics-column-unit h4 {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .logistics-column-unit p {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--botanical);
+        }
+
+        .venue-wrapper {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 35px;
+        }
+        .venue-wrapper strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            color: var(--botanical);
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 12px;
+            padding: 8px 16px;
+            border: 1px solid var(--gold-leaf);
+            color: var(--gold-dark);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .heritage-section {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .heritage-pillar {
+            width: 100%;
+            text-align: center;
+        }
+
+        .heritage-section h4 {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .heritage-section .family-vertical-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .heritage-section .patriarch, 
+        .heritage-section .matriarch {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--botanical);
+        }
+        
+        .heritage-section .footer-ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--gold-leaf);
+            line-height: 1;
+        }
+
+        .geo-marker-tag {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .blessing-closer {
+            margin-top: 40px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--botanical);
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+        .btn-action-container {
+            margin-top: 25px;
+        }
+
+        .btn-celebratory {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 85%;
+            padding: 14px 0;
+            background: linear-gradient(135deg, var(--botanical) 0%, #2A5A41 100%);
+            color: var(--pure-ivory);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(30, 70, 49, 0.15);
+        }
+    </style>
+</head>
+<body id="invitationBody">
+
+<div class="ambient-layer" id="ambientContainer"></div>
+
+<div class="scroll-outer-wrapper" id="royalScroll">
+    <div class="scroll-roller">
+        <span class="engraved-calligraphy" dir="rtl">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span>
+    </div>
+    
+    <div class="scroll-inner-content">
+        <div class="text-alignment-canvas">
+            
+            <svg class="islamic-crest-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#C5A059"/>
+            </svg>
+            
+            <div class="blessing-banner">With The Blessings Of Allah</div>
+            
+            <div class="bismillah-container">
+                <div class="arabic-bismillah"><bdo dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</bdo></div>
+                <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
+            </div>
+
+            <section class="hosts-group">
+                <div class="parent-stack">
+                    <span class="parent-name">Mr. Karamat Ali Khan</span>
+                    <span class="parent-connector">&</span>
+                    <span class="parent-name">Mrs. Rabeya Khatoon</span>
+                </div>
+                
+                <span class="conjunction">together with</span>
+                
+                <div class="parent-stack">
+                    <span class="parent-name">Mr. Sk Allauddin Ali</span>
+                    <span class="parent-connector">&</span>
+                    <span class="parent-name">Late Mrs. Afsana Anjum</span>
+                </div>
+            </section>
+
+            <p class="invitation-statement">cordially invite you to join them in celebrating the</p>
+            <h3 style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
+            
+            <main class="names-display-box">
+                <span class="person-glorious-name">Kashfull Orra</span>
+                <span class="and-ornament">&</span>
+                <span class="person-glorious-name">Arshiya Anjum</span>
+                <p class="celebration-tagline">“Two hearts, one blessed beginning of companionship and shared purpose”</p>
+            </main>
+
+            <blockquote class="quranic-centerpiece-card">
+                <div class="scholarly-arabic"><bdo dir="rtl" lang="ar">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</bdo></div>
+                <p class="scholarly-translation">"And He placed between you Mawaddah — deep affection — and Rahmah — mercy."</p>
+                <div class="scholarly-source">Surah Ar-Rum 30:21</div>
+            </blockquote>
+
+            <section>
+                <div class="logistics-title-bar">🗓️ The Blessed Date</div>
+                
+                <div class="logistics-flex-row">
+                    <div class="logistics-column-unit">
+                        <h4>Day & Date</h4>
+                        <p>Sunday, 14th June 2026</p>
+                    </div>
+                    <div class="logistics-column-unit">
+                        <h4>Time Window</h4>
+                        <p>7:30 PM Onwards</p>
+                    </div>
+                </div>
+
+                <div class="venue-wrapper">
+                    <div class="logistics-title-bar" style="margin-bottom: 4px;">Venue</div>
+                    <strong>Pramod Convention & Club Resort</strong><br>
+                    Mahanadi Ring Road, Bidanashi, Chahta,<br>
+                    Cuttack, Odisha – 753008<br>
+                    
+                    <a href="https://share.google/rs9P8jto8POCRXpUQ" class="btn-maps" target="_blank">
+                        📍 View On Google Maps
+                    </a>
+                </div>
+            </section>
+
+            <section class="heritage-section">
+                <div class="heritage-pillar">
+                    <h4>Groom's Family</h4>
+                    <div class="family-vertical-stack">
+                        <span class="patriarch">Mr. Karamat Ali Khan</span>
+                        <span class="footer-ampersand">&</span>
+                        <span class="matriarch">Mrs. Rabeya Khatoon</span>
+                    </div>
+                    <span class="geo-marker-tag">📍 Rourkela, Odisha</span>
+                </div>
+                <div class="heritage-pillar">
+                    <h4>Bride's Family</h4>
+                    <div class="family-vertical-stack">
+                        <span class="patriarch">Mr. Sk Allauddin Ali</span>
+                        <span class="footer-ampersand">&</span>
+                        <span class="matriarch">Late Mrs. Afsana Anjum</span>
+                    </div>
+                    <span class="geo-marker-tag">📍 Cuttack, Odisha</span>
+                </div>
+            </section>
+
+            <footer>
+                <p class="blessing-closer">"Your presence and prayers will be a cherished blessing as our families come together."</p>
+                
+                <div class="btn-action-container">
+                    <a href="https://wa.me/918248892174?text=Salam!%20Thank%20you%20for%20the%20beautiful%20Ring%20Ceremony%20invitation%20for%20Kashfull%20%26%20Arshiya.%20Our%20RSVP%20status:%20" class="btn-celebratory" target="_blank">
+                        Confirm Attendance
+                    </a>
+                </div>
+            </footer>
+            
+        </div>
+    </div>
+
+    <div class="scroll-roller">
+        <span class="engraved-calligraphy" dir="rtl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.getElementById('invitationBody').classList.add('unrolled-state');
+        }, 400); 
+        generateMobileAngels();
+    });
+
+    function generateMobileAngels() {
+        const container = document.getElementById('ambientContainer');
+        const count = 6; 
+        const angelPath = "M12,2C6.5,2,2,6.5,2,12c0,3.5,1.8,6.6,4.6,8.4C6.5,20.1,6.4,19.7,6.4,19.3c0-2,1.2-3.8,3-4.6c-0.9-0.9-1.4-2.1-1.4-3.5c0-2.8,2.2-5,5-5s5,2.2,5,5c0,1.4-0.5,2.6-1.4,3.5c1.8,0.8,3,2.6,3,4.6c0,0.4-0.1,0.8-0.2,1.1C20.2,18.6,22,15.5,22,12C22,6.5,17.5,2,12,2z M6.1,13.1c-1.4-0.4-2.6-1.2-3.4-2.4c1.1-0.2,2.3,0.1,3.1,0.9C6,12,6,12.6,6.1,13.1z M17.9,13.1c0.1-0.5,0.1-1.1,0.3-1.6c0.8-0.8,2-1.1,3.1-0.9C20.5,11.9,19.3,12.7,17.9,13.1z";
+
+        for (let i = 0; i < count; i++) {
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "0 0 24 24");
+            svg.classList.add("floating-angel");
+            
+            svg.style.left = `${Math.random() * 90}%`;
+            svg.style.width = `${16 + Math.random() * 12}px`;
+            svg.style.height = svg.style.width;
+            svg.style.animationDelay = `${Math.random() * 10}s`;
+            svg.style.animationDuration = `${10 + Math.random() * 6}s`;
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", angelPath);
+            svg.appendChild(path);
+            container.appendChild(svg);
+        }
+    }
+</script>
+
+</body>
+</html>
