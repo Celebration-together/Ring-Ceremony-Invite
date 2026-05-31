@@ -15,8 +15,8 @@
             --pure-ivory: #FFFFFF;      
             --soft-blush: #FAF6EE;      
             --text-main: #2A3630;       
-            /* Heavily weighted linear-deceleration curve for an ultra-smooth theatrical draw */
-            --ease-scroll-seamless: cubic-bezier(0.25, 1, 0.2, 1);
+            /* Calibrated to a state of complete fluid weightlessness (6.5s runtime) */
+            --ease-scroll-graceful: cubic-bezier(0.22, 1, 0.25, 1);
         }
 
         * {
@@ -60,45 +60,41 @@
             filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12));
         }
 
-        /* Highly stylized left sweeping wing setup */
         .wing-left-panel {
-            transform: scale(0.2) rotate(-35deg) translateX(250px);
+            transform: scale(0.15) rotate(-40deg) translateX(300px);
             transform-origin: right center;
         }
 
-        /* Highly stylized right sweeping wing setup */
         .wing-right-panel {
-            transform: scale(0.2) rotate(35deg) translateX(-250px);
+            transform: scale(0.15) rotate(40deg) translateX(-300px);
             transform-origin: left center;
         }
 
-        /* Synchronized Extended Reveal with Custom Scroll Timing */
+        /* Perfectly matched to sync with the ultra-graceful 6.5-second scroll deployment */
         .unrolled-state .wing-left-panel {
             opacity: 0.95;
             transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 4.5s var(--ease-scroll-seamless), opacity 3.5s var(--ease-scroll-seamless);
-            animation: divineHoverLeft 7s ease-in-out infinite alternate 4.5s;
+            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
+            animation: divineHoverLeft 8s ease-in-out infinite alternate 6.5s;
         }
 
         .unrolled-state .wing-right-panel {
             opacity: 0.95;
             transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 4.5s var(--ease-scroll-seamless), opacity 3.5s var(--ease-scroll-seamless);
-            animation: divineHoverRight 7s ease-in-out infinite alternate 4.5s;
+            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
+            animation: divineHoverRight 8s ease-in-out infinite alternate 6.5s;
         }
 
-        /* Ethereal Flutter Cycles */
         @keyframes divineHoverLeft {
             0% { transform: rotate(0deg) translateY(0); filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12)); }
-            100% { transform: rotate(-2deg) translateY(-10px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
+            100% { transform: rotate(-2deg) translateY(-12px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
         }
         @keyframes divineHoverRight {
             0% { transform: rotate(0deg) translateY(0); filter: drop-shadow(0 15px 30px rgba(142, 110, 50, 0.12)); }
-            100% { transform: rotate(2deg) translateY(-10px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
+            100% { transform: rotate(2deg) translateY(-12px) scale(1.01); filter: drop-shadow(0 20px 40px rgba(197, 160, 89, 0.25)); }
         }
 
-
-        /* --- ROYAL SEROLL MECHANICAL PARCHMENT ARCHITECTURE --- */
+        /* --- THE ROYAL PARCHMENT MECHANICAL ARCHITECTURE --- */
         .scroll-outer-wrapper {
             max-width: 540px;
             width: 100%;
@@ -125,22 +121,20 @@
         .scroll-roller::before { left: -8px; }
         .scroll-roller::after { right: -8px; }
 
-        /* The Deep Luxury Scroll Content Window */
         .scroll-inner-content {
             background: linear-gradient(135deg, var(--pure-ivory) 0%, var(--soft-blush) 100%);
             border-left: 1px solid rgba(197, 160, 89, 0.38);
             border-right: 1px solid rgba(197, 160, 89, 0.38);
             padding: 0 clamp(20px, 5vw, 40px);
-            max-height: 0px; /* Base dynamic collapse anchor */
+            max-height: 0px; 
             opacity: 0;
             overflow: hidden;
-            /* Seamless unrolling transition configuration over a grand 4.5s frame */
-            transition: max-height 4.5s var(--ease-scroll-seamless), opacity 3.5s var(--ease-scroll-seamless), padding 4.5s var(--ease-scroll-seamless);
+            /* Slipped into an ultra-graceful decelerating curve spanning 6.5s total */
+            transition: max-height 6.5s var(--ease-scroll-graceful), opacity 4s var(--ease-scroll-graceful), padding 6.5s var(--ease-scroll-graceful);
         }
 
-        /* Active Unrolled State Activation */
         .unrolled-state .scroll-inner-content {
-            max-height: 2500px;
+            max-height: 3000px;
             opacity: 1;
             padding: clamp(55px, 10vw, 75px) clamp(20px, 5vw, 40px);
         }
@@ -159,8 +153,7 @@
             text-align: center;
         }
 
-
-        /* --- INVITATION CORE COMPOSITIONS --- */
+        /* --- TYPOGRAPHY COMPOSITIONS --- */
         .islamic-crest {
             font-size: 22px;
             color: var(--gold-leaf);
@@ -197,15 +190,37 @@
             color: var(--text-muted);
         }
 
+        /* --- PARENT DISPLAY RE-ENGINEERED FOR PERFECT ONE-BELOW-THE-OTHER ALIGNMENT --- */
         .hosts-group {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(18px, 4vw, 20px);
+            font-size: clamp(18px, 4.2vw, 20px);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.4;
         }
-        .hosts-group p strong {
+
+        /* Explicit stacking mechanics with isolated spacing */
+        .parent-stack {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin: 4px 0;
+        }
+
+        .parent-name {
             font-weight: 700;
             color: var(--botanical);
+            display: block;
+            margin: 2px 0;
+        }
+
+        .parent-connector {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--gold-leaf);
+            margin: 1px 0;
+            display: block;
         }
 
         .conjunction {
@@ -214,7 +229,7 @@
             font-size: 16px;
             font-weight: 400;
             color: var(--gold-dark);
-            margin: 6px 0;
+            margin: 14px 0;
             display: block;
         }
 
@@ -375,7 +390,7 @@
             border-color: var(--botanical);
         }
 
-        /* --- HERITAGE SECTION ALIGNMENT FIX (MANDATE STRICT LOCK) --- */
+        /* --- HERITAGE FOOTER ALIGNMENT INTEGRITY LOCK (MANDATE CHECK) --- */
         .heritage-section {
             display: flex;
             justify-content: space-between;
@@ -393,7 +408,7 @@
             text-align: left;
         }
 
-        /* Perfect alignment configuration targeting right side column mapping */
+        /* Strict right-side tracking alignment lock for Cuttack, Odisha block */
         .heritage-pillar-right {
             text-align: right;
         }
@@ -469,20 +484,22 @@
             transform: translateY(-2px);
         }
 
-        /* --- RESPONSIVE MEDIA MANAGEMENT BREAKPOINTS --- */
+        /* --- RESPONSIVE MEDIA ENVIRONMENT BREAKPOINTS --- */
         @media (max-width: 1024px) {
             .wings-viewport-wrapper {
                 width: 100vw;
                 left: 0;
-                transform: scale(0.7);
+                transform: scale(0.68);
             }
         }
 
         @media (max-width: 600px) {
             body { padding: 40px 10px; }
-            .wings-viewport-wrapper { display: none; } /* Disabled on mobile viewport targets for precise typographic viewability */
+            .wings-viewport-wrapper { display: none; } /* Kept clean on tiny mobile layouts for absolute scroll focus */
             .scroll-inner-content { padding: 0 16px; }
             .unrolled-state .scroll-inner-content { padding: 50px 16px; }
+            
+            /* Structural preservation updates for mobile viewport view */
             .heritage-section { flex-direction: column; gap: 25px; }
             .heritage-pillar { width: 100%; }
             .heritage-pillar-left, .heritage-pillar-right { text-align: center; }
@@ -493,9 +510,9 @@
 </head>
 <body id="invitationBody">
 
-<!-- Rebuilt High-Fidelity Majestic Angelic Wing Panels -->
+<!-- Re-Rendered High-Fidelity Majestic Angelic Wings -->
 <div class="wings-viewport-wrapper">
-    <!-- Left Wing Path Architecture -->
+    <!-- Left Wing -->
     <svg class="majestic-wing wing-left-panel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
         <defs>
             <linearGradient id="divineGold" x1="100%" y1="0%" x2="0%" y2="100%">
@@ -505,43 +522,31 @@
             </linearGradient>
         </defs>
         <g fill="none" stroke="url(#divineGold)" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Broad Majestic Sweeping Feather Paths -->
             <path d="M380,80 C330,40 240,30 140,110 C60,175 20,270 15,360 C10,440 45,510 110,540 C150,560 210,510 260,440 C320,350 365,220 380,80 Z" stroke-width="2.5" opacity="0.9"/>
-            <!-- Tiered Primary Plumes -->
             <path d="M360,130 C300,90 220,95 140,180 C80,245 45,330 45,410 C45,480 85,510 130,470 C180,425 240,320 310,210" stroke-width="2" opacity="0.8"/>
             <path d="M340,180 C280,140 210,150 145,235 C90,305 65,385 70,450 C75,490 110,480 150,430 C200,370 260,270 340,180 Z" stroke-width="1.8" opacity="0.75"/>
-            <!-- Intricate Internal Feather Filigree Overlay Matrix -->
             <path d="M320,230 C260,200 200,210 150,290 C110,350 95,420 105,470 C140,460 190,395 240,310" stroke-width="1.5" opacity="0.65"/>
             <path d="M300,280 C250,250 200,260 160,330 C125,390 115,440 140,455 C170,430 210,370 260,300" stroke-width="1.2" opacity="0.55"/>
-            <path d="M280,330 C240,300 195,310 165,370 C140,415 140,445 165,445 C190,420 225,370 260,330 Z" stroke-width="1" opacity="0.45"/>
-            <!-- Outer Ethereal Airflow Splines -->
             <path d="M120,120 C70,180 35,260 25,350" stroke-width="1.5" opacity="0.4"/>
             <path d="M90,170 C50,235 25,320 20,410" stroke-width="1.2" opacity="0.3"/>
-            <path d="M70,230 C35,300 20,380 30,460" stroke-width="1" opacity="0.2"/>
         </g>
     </svg>
 
-    <!-- Right Wing Path Architecture -->
+    <!-- Right Wing -->
     <svg class="majestic-wing wing-right-panel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
         <g fill="none" stroke="url(#divineGold)" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Broad Majestic Sweeping Feather Paths -->
             <path d="M20,80 C70,40 160,30 260,110 C340,175 380,270 385,360 C390,440 355,510 290,540 C250,560 190,510 140,440 C80,350 35,220 20,80 Z" stroke-width="2.5" opacity="0.9"/>
-            <!-- Tiered Primary Plumes -->
             <path d="M40,130 C100,90 180,95 260,180 C320,245 355,330 355,410 C355,480 315,510 270,470 C220,425 160,320 90,210" stroke-width="2" opacity="0.8"/>
             <path d="M60,180 C120,140 190,150 255,235 C310,305 335,385 330,450 C325,490 290,480 250,430 C200,370 140,270 60,180 Z" stroke-width="1.8" opacity="0.75"/>
-            <!-- Intricate Internal Feather Filigree Overlay Matrix -->
             <path d="M80,230 C140,200 200,210 250,290 C290,350 305,420 295,470 C260,460 210,395 160,310" stroke-width="1.5" opacity="0.65"/>
             <path d="M100,280 C150,250 200,260 240,330 C275,390 285,440 260,455 C230,430 190,370 140,300" stroke-width="1.2" opacity="0.55"/>
-            <path d="M120,330 C160,300 205,310 235,370 C260,415 260,445 235,445 C210,420 175,370 140,330 Z" stroke-width="1" opacity="0.45"/>
-            <!-- Outer Ethereal Airflow Splines -->
             <path d="M280,120 C330,180 365,260 375,350" stroke-width="1.5" opacity="0.4"/>
             <path d="M310,170 C350,235 375,320 380,410" stroke-width="1.2" opacity="0.3"/>
-            <path d="M330,230 C365,300 380,380 370,460" stroke-width="1" opacity="0.2"/>
         </g>
     </svg>
 </div>
 
-<!-- Scroll Body Configuration Canvas -->
+<!-- Scroll Body -->
 <div class="scroll-outer-wrapper" id="royalScroll">
     <div class="scroll-roller"></div>
     
@@ -556,10 +561,21 @@
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
+            <!-- Parent Information Optimized for Stacked Alignment Across All Mobile Screens -->
             <section class="hosts-group">
-                <p><strong class="patriarch">Mr. Karamat Ali Khan</strong> & <strong class="matriarch">Mrs. Rabeya Khatoon</strong></p>
+                <div class="parent-stack">
+                    <span class="parent-name">Mr. Karamat Ali Khan</span>
+                    <span class="parent-connector">&</span>
+                    <span class="parent-name">Mrs. Rabeya Khatoon</span>
+                </div>
+                
                 <span class="conjunction">together with</span>
-                <p><strong class="patriarch">Mr. Sk Allauddin Ali</strong> & <strong class="matriarch">Late Mrs. Afsana Anjum</strong></p>
+                
+                <div class="parent-stack">
+                    <span class="parent-name">Mr. Sk Allauddin Ali</span>
+                    <span class="parent-connector">&</span>
+                    <span class="parent-name">Late Mrs. Afsana Anjum</span>
+                </div>
             </section>
 
             <p class="invitation-statement">cordially invite you to join them in celebrating the</p>
@@ -604,7 +620,7 @@
                 </div>
             </section>
 
-            <!-- Lineage Grid Columns Aligned Safely to image_98ea37.png Specifications -->
+            <!-- Lineage Columns - Precision Aligned (Right Hand Alignment Locked for Cuttack Block) -->
             <section class="heritage-section">
                 <div class="heritage-pillar heritage-pillar-left">
                     <h4>Groom's Family</h4>
@@ -613,7 +629,6 @@
                     <span class="geo-marker-tag">📍 Rourkela, Odisha</span>
                 </div>
                 <div class="heritage-pillar heritage-pillar-right">
-                    <h4>Bride's Family</h4>
                     <h4>Bride's Family</h4>
                     <p class="patriarch">Mr. Sk Allauddin Ali</p>
                     <p class="matriarch">& Late Mrs. Afsana Anjum</p>
@@ -638,7 +653,7 @@
 </div>
 
 <script>
-    // Seamless simultaneous initialization trigger script
+    // Initializer delay to smooth page handoff before triggering the 6.5s theatrical scroll layout
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
