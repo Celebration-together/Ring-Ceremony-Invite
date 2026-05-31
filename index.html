@@ -73,15 +73,15 @@
         .unrolled-state .wing-left-panel {
             opacity: 0.95;
             transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
-            animation: divineHoverLeft 8s ease-in-out infinite alternate 6.5s;
+            transition: transform 4.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
+            animation: divineHoverLeft 8s ease-in-out infinite alternate 4.5s;
         }
 
         .unrolled-state .wing-right-panel {
             opacity: 0.95;
             transform: scale(1) rotate(0deg) translateX(0);
-            transition: transform 6.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
-            animation: divineHoverRight 8s ease-in-out infinite alternate 6.5s;
+            transition: transform 4.5s var(--ease-scroll-graceful), opacity 4.5s var(--ease-scroll-graceful);
+            animation: divineHoverRight 8s ease-in-out infinite alternate 4.5s;
         }
 
         @keyframes divineHoverLeft {
@@ -99,26 +99,62 @@
             width: 100%;
             z-index: 1;
             position: relative;
-            filter: drop-shadow(0 30px 60px rgba(30, 70, 49, 0.15));
+            filter: drop-shadow(0 30px 60px rgba(30, 70, 49, 0.2));
         }
 
+        /* Craftily sculpted vintage metallic scroll handles with engraved calligraphic texture */
         .scroll-roller {
-            height: 20px;
-            background: linear-gradient(90deg, #4A3713 0%, var(--gold-leaf) 15%, #A8833C 50%, var(--gold-leaf) 85%, #4A3713 100%);
-            border-radius: 4px;
+            height: 32px;
+            background: linear-gradient(180deg, #3A2D13 0%, #5C4724 25%, #A8833C 50%, #5C4724 75%, #231B0B 100%);
+            border-top: 1px solid rgba(255, 230, 170, 0.35);
+            border-bottom: 2px solid #1A1307;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 4px 12px rgba(0,0,0,0.35);
             position: relative;
             z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+
+        /* The subtle Quranic/Arabic calligraphy texture seamlessly blended into the gold handle metal */
+        .scroll-roller::content {
+            pointer-events: none;
+        }
+        
+        .engraved-calligraphy {
+            font-family: 'Amiri', serif;
+            font-size: 15px;
+            color: #FFFFE0;
+            opacity: 0.18;
+            white-space: nowrap;
+            letter-spacing: 4px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+            user-select: none;
+        }
+
+        /* Elaborate side knobs/filigree caps for handles */
         .scroll-roller::before, .scroll-roller::after {
             content: '';
             position: absolute;
-            top: -6px; width: 16px; height: 32px;
-            background: linear-gradient(180deg, #D5B46E, #4A3713);
-            border-radius: 3px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            top: -7px; 
+            width: 24px; 
+            height: 46px;
+            background: radial-gradient(circle at center, #F3E0B5 0%, #C5A059 40%, #7A5E2A 85%, #423111 100%);
+            border: 2px solid #8E6E32;
+            border-radius: 6px;
+            box-shadow: 
+                0 6px 12px rgba(0,0,0,0.4),
+                inset 0 1px 3px rgba(255,255,255,0.4);
         }
-        .scroll-roller::before { left: -8px; }
-        .scroll-roller::after { right: -8px; }
+        .scroll-roller::before { 
+            left: -14px; 
+            border-right: 3px double #4A3713;
+        }
+        .scroll-roller::after { 
+            right: -14px; 
+            border-left: 3px double #4A3713;
+        }
 
         .scroll-inner-content {
             background: linear-gradient(135deg, var(--pure-ivory) 0%, var(--soft-blush) 100%);
@@ -152,12 +188,12 @@
         }
 
         /* --- TYPOGRAPHY COMPOSITIONS --- */
-        .islamic-crest {
-            font-size: 22px;
-            color: var(--gold-leaf);
-            line-height: 1;
-            margin-bottom: 20px;
+        .islamic-crest-svg {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 22px;
             display: inline-block;
+            filter: drop-shadow(0 2px 4px rgba(142, 110, 50, 0.2));
         }
 
         .blessing-banner {
@@ -564,12 +600,19 @@
 </div>
 
 <div class="scroll-outer-wrapper" id="royalScroll">
-    <div class="scroll-roller"></div>
+    <!-- Crafted Top Roller (Engraved text says: Glory be to Him) -->
+    <div class="scroll-roller">
+        <span class="engraved-calligraphy" dir="rtl">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span>
+    </div>
     
     <div class="scroll-inner-content">
         <div class="text-alignment-canvas">
             
-            <div class="islamic-crest">🎔</div>
+            <!-- Pure SVG vector path centerpiece to completely avoid cross/box rendering bugs on older mobile phone devices -->
+            <svg class="islamic-crest-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#C5A059"/>
+            </svg>
+            
             <div class="blessing-banner">With The Blessings Of Allah</div>
             
             <div class="bismillah-container">
@@ -577,7 +620,7 @@
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
-            <!-- Parent Architecture: Precision Stacked Vertically (Husband Above, Wife Below, & In-Between) -->
+            <!-- Parent Architecture: Precision Stacked Vertically -->
             <section class="hosts-group">
                 <div class="parent-stack">
                     <span class="parent-name">Mr. Karamat Ali Khan</span>
@@ -636,7 +679,7 @@
                 </div>
             </section>
 
-            <!-- Lineage Columns - Duplications Removed, Strictly Linear Stacked Parent Blocks -->
+            <!-- Lineage Columns -->
             <section class="heritage-section">
                 <div class="heritage-pillar heritage-pillar-left">
                     <h4>Groom's Family</h4>
@@ -671,7 +714,10 @@
         </div>
     </div>
 
-    <div class="scroll-roller"></div>
+    <!-- Crafted Bottom Roller (Engraved text says: Praise be to Allah) -->
+    <div class="scroll-roller">
+        <span class="engraved-calligraphy" dir="rtl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
+    </div>
 </div>
 
 <script>
