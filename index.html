@@ -6,16 +6,16 @@
     <title>Ring Ceremony Celebration - Dr. Kashfull & Arshiya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
             --botanical: #1A3C2B;       
             --gold-leaf: #D4AF37;       
             --gold-dark: #AA7C11;       
-            --parchment-light: #F5E6C8;      
-            --parchment-dark: #E4D1B2;
+            --parchment-light: #FDFBF7;      
+            --parchment-dark: #F3EAD3;
             --text-main: #1C2320;       
-            --text-muted: #4A5550;
+            --text-muted: #5C6A64;
             --wizard-transition: all 1.2s cubic-bezier(0.25, 1, 0.3, 1);
         }
 
@@ -26,10 +26,10 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Ambient Chamber Background */
+        /* Ambient Sunlit Chamber Background - Gloom Dispelled */
         body {
             font-family: 'Outfit', sans-serif;
-            background: radial-gradient(circle at center, #1E2522 0%, #0B0E0D 100%);
+            background: radial-gradient(circle at center, #FBF6EF 0%, #EADDC9 100%);
             color: var(--text-main);
             width: 100vw;
             min-height: 100vh;
@@ -41,7 +41,7 @@
             position: relative;
         }
 
-        /* --- LUMOS PARTICLE FIELD (Enchanted Ambient Sparks) --- */
+        /* --- LUMOS PARTICLE FIELD (Warm Golden Sun-Dapples) --- */
         .lumos-field {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -52,20 +52,20 @@
 
         .spark {
             position: absolute;
-            background: radial-gradient(circle, rgba(212,175,55,1) 0%, rgba(212,175,55,0) 70%);
+            background: radial-gradient(circle, rgba(212,175,55,0.8) 0%, rgba(212,175,55,0) 70%);
             border-radius: 50%;
             opacity: 0;
             animation: floatSpark 8s infinite ease-in-out;
         }
-        .spark:nth-child(1) { left: 15%; width: 6px; height: 6px; animation-delay: 1s; animation-duration: 10s; }
-        .spark:nth-child(2) { left: 45%; width: 4px; height: 4px; animation-delay: 3s; animation-duration: 7s; }
-        .spark:nth-child(3) { left: 80%; width: 8px; height: 8px; animation-delay: 0s; animation-duration: 12s; }
+        .spark:nth-child(1) { left: 15%; width: 8px; height: 8px; animation-delay: 1s; animation-duration: 10s; }
+        .spark:nth-child(2) { left: 50%; width: 5px; height: 5px; animation-delay: 3s; animation-duration: 7s; }
+        .spark:nth-child(3) { left: 85%; width: 10px; height: 10px; animation-delay: 0s; animation-duration: 12s; }
 
         @keyframes floatSpark {
             0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
-            30% { opacity: 0.6; }
-            70% { opacity: 0.4; transform: translateY(30vh) translateX(30px) scale(1.2); }
-            100% { transform: translateY(-10vh) translateX(-20px) scale(0.3); opacity: 0; }
+            30% { opacity: 0.5; }
+            70% { opacity: 0.4; transform: translateY(30vh) translateX(25px) scale(1.1); }
+            100% { transform: translateY(-10vh) translateX(-15px) scale(0.3); opacity: 0; }
         }
 
         /* --- THE MACUSA SCROLL ARCHITECTURE --- */
@@ -74,18 +74,18 @@
             max-width: 460px;
             z-index: 1;
             position: relative;
-            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.85));
+            filter: drop-shadow(0 25px 45px rgba(138, 110, 79, 0.45));
             margin: 0 auto;
             perspective: 1000px;
         }
 
         /* Heavy Mahogany & Brass Rollers */
         .scroll-roller {
-            height: 36px;
-            background: linear-gradient(180deg, #1A1105 0%, #3D280E 30%, #5C3E17 50%, #3D280E 70%, #1A1105 100%);
-            border-top: 1px solid rgba(212, 175, 55, 0.4);
-            border-bottom: 2px solid #0A0702;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.5);
+            height: 38px;
+            background: linear-gradient(180deg, #24180A 0%, #4D3312 30%, #6E4A1C 50%, #4D3312 70%, #24180A 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.5);
+            border-bottom: 2px solid #110B04;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 4px 8px rgba(0,0,0,0.3);
             position: relative;
             z-index: 3;
             display: flex;
@@ -97,8 +97,8 @@
         .engraved-calligraphy {
             font-family: 'Amiri', serif;
             font-size: 15px;
-            color: #FFF6D6;
-            opacity: 0.25;
+            color: #FFF9E6;
+            opacity: 0.3;
             white-space: nowrap;
             letter-spacing: 4px;
             user-select: none;
@@ -111,21 +111,21 @@
             position: absolute;
             top: -8px; 
             width: 20px; 
-            height: 52px;
+            height: 54px;
             background: radial-gradient(circle at center, #FFEAA7 0%, #D4AF37 40%, #8A640F 85%, #3A2804 100%);
             border: 2px solid #AA7C11;
             border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.25);
         }
         .scroll-roller::before { left: -10px; }
         .scroll-roller::after { right: -10px; }
 
         /* The Living Parchment Core with Organic Hand-Cut Deckled Edges */
         .scroll-inner-content {
-            background: linear-gradient(to right, #DFCEB0, #F5E6C8 8%, #F5E6C8 92%, #DFCEB0);
-            box-shadow: inset 0 0 35px rgba(92, 62, 23, 0.35);
-            border-left: 1px solid #3D280E;
-            border-right: 1px solid #3D280E;
+            background: linear-gradient(to right, #EAD9BC, #FCF6E8 8%, #FCF6E8 92%, #EAD9BC);
+            box-shadow: inset 0 0 40px rgba(122, 90, 52, 0.25);
+            border-left: 1px solid #4D3312;
+            border-right: 1px solid #4D3312;
             padding: 0 24px;
             max-height: 0px; 
             opacity: 0;
@@ -159,7 +159,7 @@
             content: '';
             position: absolute;
             top: 20px; right: 16px; bottom: 20px; left: 16px;
-            border: 1px dashed rgba(170, 124, 17, 0.25);
+            border: 1px dashed rgba(170, 124, 17, 0.3);
             border-radius: 4px;
             pointer-events: none;
             clip-path: polygon(
@@ -180,12 +180,12 @@
             height: 32px;
             margin-bottom: 20px;
             display: inline-block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
             animation: goldenPulse 4s infinite ease-in-out;
         }
 
         @keyframes goldenPulse {
-            0%, 100% { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) sepia(0); }
+            0%, 100% { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) sepia(0); }
             50% { filter: drop-shadow(0 0 10px rgba(212,175,55,0.6)) sepia(1); }
         }
 
@@ -276,26 +276,28 @@
         /* --- THE SACRED NAMES DISPLAY --- */
         .names-display-box {
             margin: 35px 0;
-            background: rgba(26, 60, 43, 0.03);
-            padding: 20px 10px;
+            background: rgba(26, 60, 43, 0.02);
+            padding: 24px 12px;
             border-radius: 8px;
             border: 1px dashed rgba(170, 124, 17, 0.2);
         }
 
+        /* Absolute Single-Line Scale Lock for the Groom & Bride */
         .person-glorious-name {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 700;
-            font-size: 36px;
+            font-size: clamp(26px, 7vw, 36px); /* Fluidly scales down on smaller screens to protect the line alignment */
+            white-space: nowrap;               /* Hard line-break restriction */
             color: var(--botanical);
             line-height: 1.2;
             display: block;
             letter-spacing: 0.5px;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+            text-shadow: 0 1px 1px rgba(255,255,255,0.6);
             transition: transform 0.4s ease;
         }
         .person-glorious-name:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
             color: #0d2318;
         }
 
@@ -331,13 +333,13 @@
 
         /* --- PARCHMENT SCRAP INTERIOR CARD --- */
         .quranic-centerpiece-card {
-            background: linear-gradient(180deg, rgba(219, 203, 175, 0.5) 0%, rgba(206, 187, 154, 0.4) 100%);
-            border-top: 1px solid rgba(170, 124, 17, 0.3);
-            border-bottom: 1px solid rgba(170, 124, 17, 0.3);
+            background: linear-gradient(180deg, rgba(234, 217, 188, 0.4) 0%, rgba(221, 201, 166, 0.3) 100%);
+            border-top: 1px solid rgba(170, 124, 17, 0.25);
+            border-bottom: 1px solid rgba(170, 124, 17, 0.25);
             padding: 24px 18px;
             margin: 40px 0;
             border-radius: 4px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
         }
 
         .scholarly-arabic {
@@ -377,8 +379,8 @@
         .logistics-flex-row {
             display: flex;
             flex-direction: column;
-            background: rgba(26, 60, 43, 0.05);
-            border: 1px solid rgba(26, 60, 43, 0.1);
+            background: rgba(26, 60, 43, 0.04);
+            border: 1px solid rgba(26, 60, 43, 0.08);
             border-radius: 4px;
             padding: 18px 0;
             margin-bottom: 30px;
@@ -388,7 +390,7 @@
             padding: 8px 0;
         }
         .logistics-column-unit:first-child {
-            border-bottom: 1px dashed rgba(26, 60, 43, 0.15);
+            border-bottom: 1px dashed rgba(26, 60, 43, 0.12);
             padding-bottom: 16px;
             margin-bottom: 8px;
         }
@@ -428,7 +430,7 @@
             gap: 6px;
             margin-top: 16px;
             padding: 11px 22px;
-            background: rgba(26, 60, 43, 0.04);
+            background: rgba(26, 60, 43, 0.03);
             border: 1px solid var(--gold-dark);
             color: var(--gold-dark);
             text-decoration: none;
@@ -473,7 +475,7 @@
             display: flex;
             flex-direction: column;
             gap: 28px;
-            border-top: 1px double rgba(170, 124, 17, 0.3);
+            border-top: 1px double rgba(170, 124, 17, 0.25);
             padding-top: 26px;
             margin-top: 35px;
         }
@@ -553,7 +555,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             border: 1px solid var(--gold-leaf);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(138, 110, 79, 0.2);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
             position: relative;
             z-index: 1;
@@ -600,14 +602,14 @@
 
         .btn-celebratory:hover {
             transform: scale(1.03) translateY(-3px);
-            box-shadow: 0 15px 35px rgba(212,175,55,0.35);
+            box-shadow: 0 12px 28px rgba(212,175,55,0.3);
             color: #FFFFFF;
         }
     </style>
 </head>
 <body id="invitationBody">
 
-<!-- Ambient Wizarding Spark Field -->
+<!-- Ambient Wizarding Spark Field (Sun-Dapples) -->
 <div class="lumos-field">
     <div class="spark"></div>
     <div class="spark"></div>
@@ -656,13 +658,13 @@
             <h3 style="font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
             
             <main class="names-display-box">
-                <!-- Groom Information -->
+                <!-- Groom Information - Single Line Scale Locked -->
                 <span class="person-glorious-name">Dr. Kashfull Orra</span>
                 <span class="relationship-line">Youngest son, cherished brother of two loving sisters</span>
                 
                 <span class="and-ornament">&</span>
                 
-                <!-- Bride Information -->
+                <!-- Bride Information - Single Line Scale Locked -->
                 <span class="person-glorious-name">Arshiya Anjum</span>
                 <span class="relationship-line">Youngest daughter, beloved by her family and loved ones</span>
                 
