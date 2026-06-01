@@ -267,19 +267,18 @@
             border: 1px dashed rgba(170, 124, 17, 0.2);
         }
 
-        /* FIXED: Crisp, deep botanical text color with elegant metallic gold backing */
+        /* FIXED: No gradients, no masking. Pure solid deep color with elegant drop shadowing */
         .person-glorious-name {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 700;
             font-size: clamp(28px, 7.5vw, 38px); 
             white-space: nowrap;               
-            color: var(--botanical) !important;
-            -webkit-text-fill-color: var(--botanical) !important; /* Forces layout overrides */
+            color: #1A3C2B !important; 
             line-height: 1.2;
             display: block;
             letter-spacing: 0.5px;
-            text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.5), 0px 0px 1px rgba(170, 124, 17, 0.3);
+            text-shadow: 1px 1px 1px rgba(212, 175, 55, 0.6);
             transition: transform 0.4s ease;
         }
 
@@ -643,7 +642,7 @@
         const animatedBlocks = document.querySelectorAll('.hp-fly-in');
         
         function checkViewportVisibility() {
-            const triggerPoint = window.innerHeight * 0.88; // Triggers slightly lower for a snappier response
+            const triggerPoint = window.innerHeight * 0.88;
             
             animatedBlocks.forEach(block => {
                 const blockTopPosition = block.getBoundingClientRect().top;
