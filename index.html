@@ -282,23 +282,38 @@
             border: 1px dashed rgba(170, 124, 17, 0.2);
         }
 
-        /* Absolute Single-Line Scale Lock for the Groom & Bride */
+        /* Absolute Single-Line Scale Lock for the Groom & Bride + Magical Shimmer Layer */
         .person-glorious-name {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 700;
-            font-size: clamp(26px, 7vw, 36px); /* Fluidly scales down on smaller screens to protect the line alignment */
-            white-space: nowrap;               /* Hard line-break restriction */
+            font-size: clamp(26px, 7vw, 36px); 
+            white-space: nowrap;               
             color: var(--botanical);
             line-height: 1.2;
             display: block;
             letter-spacing: 0.5px;
             text-shadow: 0 1px 1px rgba(255,255,255,0.6);
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, color 0.4s ease;
+            position: relative;
         }
+
+        /* Text Shimmer Spell Triggered upon Viewport Entrance */
+        .cast-spells .person-glorious-name {
+            background: linear-gradient(to right, var(--botanical) 0%, var(--gold-leaf) 50%, var(--botanical) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGleam 2.5s linear 1;
+        }
+
+        @keyframes textGleam {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
         .person-glorious-name:hover {
             transform: scale(1.02);
-            color: #0d2318;
         }
 
         .relationship-line {
@@ -605,6 +620,26 @@
             box-shadow: 0 12px 28px rgba(212,175,55,0.3);
             color: #FFFFFF;
         }
+
+        /* 
+           --- THE HARRY POTTER KINETIC SCROLL MECHANIC ---
+           These elements listen directly to the guest's scroll position. 
+           They fly upward into position inside a 3D field like enchanted scripts.
+        */
+        .kinetic-spell {
+            opacity: 0;
+            transform: translateY(25px) rotateX(-10deg);
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                        transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        /* State cast upon text entry into view */
+        .kinetic-spell.cast-spells {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
     </style>
 </head>
 <body id="invitationBody">
@@ -631,14 +666,14 @@
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#D4AF37"/>
             </svg>
             
-            <div class="blessing-banner">With The Blessings Of Allah</div>
+            <div class="blessing-banner kinetic-spell">With The Blessings Of Allah</div>
             
-            <div class="bismillah-container">
+            <div class="bismillah-container kinetic-spell">
                 <div class="arabic-bismillah"><bdo dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</bdo></div>
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
-            <section class="hosts-group">
+            <section class="hosts-group kinetic-spell">
                 <div class="parent-stack">
                     <span class="parent-name">Mr. Karamat Ali Khan</span>
                     <span class="parent-connector">&</span>
@@ -654,33 +689,33 @@
                 </div>
             </section>
 
-            <p class="invitation-statement">cordially invite you to join them in celebrating the</p>
-            <h3 style="font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
+            <p class="invitation-statement kinetic-spell">cordially invite you to join them in celebrating the</p>
+            <h3 class="kinetic-spell" style="font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
             
-            <main class="names-display-box">
-                <!-- Groom Information - Single Line Scale Locked -->
+            <main class="names-display-box kinetic-spell">
+                <!-- Groom Information - Single Line Scale Locked & Shimmer Kinetic Entry -->
                 <span class="person-glorious-name">Dr. Kashfull Orra</span>
                 <span class="relationship-line">Youngest son, cherished brother of two loving sisters</span>
                 
                 <span class="and-ornament">&</span>
                 
-                <!-- Bride Information - Single Line Scale Locked -->
+                <!-- Bride Information - Single Line Scale Locked & Shimmer Kinetic Entry -->
                 <span class="person-glorious-name">Arshiya Anjum</span>
                 <span class="relationship-line">Youngest daughter, beloved by her family and loved ones</span>
                 
                 <p class="celebration-tagline">“Two hearts, one blessed beginning of companionship and shared purpose”</p>
             </main>
 
-            <blockquote class="quranic-centerpiece-card">
+            <blockquote class="quranic-centerpiece-card kinetic-spell">
                 <div class="scholarly-arabic"><bdo dir="rtl" lang="ar">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</bdo></div>
                 <p class="scholarly-translation">"And He placed between you Mawaddah — deep affection — and Rahmah — mercy."</p>
                 <div class="scholarly-source">Surah Ar-Rum 30:21</div>
             </blockquote>
 
             <section>
-                <div class="logistics-title-bar">🗓️ The Blessed Date</div>
+                <div class="logistics-title-bar kinetic-spell">🗓️ The Blessed Date</div>
                 
-                <div class="logistics-flex-row">
+                <div class="logistics-flex-row kinetic-spell">
                     <div class="logistics-column-unit">
                         <h4>Day & Date</h4>
                         <p>Sunday, 14th June 2026</p>
@@ -691,7 +726,7 @@
                     </div>
                 </div>
 
-                <div class="venue-wrapper">
+                <div class="venue-wrapper kinetic-spell">
                     <div class="logistics-title-bar" style="margin-bottom: 6px;">Venue</div>
                     <strong>Pramod Convention & Club Resort</strong><br>
                     Mahanadi Ring Road, Bidanashi, Chahta,<br>
@@ -703,7 +738,7 @@
                 </div>
             </section>
 
-            <section class="heritage-section">
+            <section class="heritage-section kinetic-spell">
                 <div class="heritage-pillar">
                     <h4>Groom's Family</h4>
                     <div class="family-vertical-stack">
@@ -725,9 +760,9 @@
             </section>
 
             <footer>
-                <p class="blessing-closer">"Your presence and prayers will be a cherished blessing as our families come together."</p>
+                <p class="blessing-closer kinetic-spell">"Your presence and prayers will be a cherished blessing as our families come together."</p>
                 
-                <div class="btn-action-container">
+                <div class="btn-action-container kinetic-spell">
                     <a href="https://wa.me/918248892174?text=Salam!%20Thank%20you%20for%20the%20beautiful%20Ring%20Ceremony%20invitation%20for%20Dr.%20Kashfull%20%26%20Arshiya.%20Our%20RSVP%20status:%20" class="btn-celebratory" target="_blank">
                         Confirm Attendance
                     </a>
@@ -745,11 +780,35 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        // Safe time delay for the enchantment script to take hold
+        // Safe time delay for the core unrolling animation
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
+            initKineticSpells();
         }, 600); 
     });
+
+    // The Intersection Scroll-Linked Spell Engine
+    function initKineticSpells() {
+        const spellOptions = {
+            root: null,
+            rootMargin: "0px 0px -12% 0px", // Triggers just before the item hits mid-screen
+            threshold: 0.15
+        };
+
+        const spellCaster = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('cast-spells');
+                    // Once enchanted, let it remain permanent to preserve performance
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, spellOptions);
+
+        // Bind the spell to all designated kinetic blocks
+        const targets = document.querySelectorAll('.kinetic-spell');
+        targets.forEach(target => spellCaster.observe(target));
+    }
 </script>
 
 </body>
