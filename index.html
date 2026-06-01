@@ -9,14 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --botanical: #1E4631;       
-            --gold-leaf: #C5A059;       
-            --gold-dark: #8E6E32;       
-            --pure-ivory: #FFFFFF;      
-            --soft-blush: #FAF6EE;      
-            --text-main: #2A3630;       
-            --text-muted: #5A6560;
-            --ease-scroll-graceful: cubic-bezier(0.22, 1, 0.25, 1);
+            --botanical: #1A3C2B;       
+            --gold-leaf: #D4AF37;       
+            --gold-dark: #AA7C11;       
+            --parchment-light: #F5E6C8;      
+            --parchment-dark: #E4D1B2;
+            --text-main: #1C2320;       
+            --text-muted: #4A5550;
+            --wizard-transition: all 1.2s cubic-bezier(0.25, 1, 0.3, 1);
         }
 
         * {
@@ -26,196 +26,209 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Continuous Fluid Background Animation */
+        /* Ambient Chamber Background */
         body {
             font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #F4F7F5, #C8D5CE, #E4ECE8, #D2DFD8);
-            background-size: 400% 400%;
-            animation: fluidBackground 12s ease infinite;
+            background: radial-gradient(circle at center, #1E2522 0%, #0B0E0D 100%);
             color: var(--text-main);
             width: 100vw;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 24px 12px;
+            padding: 40px 12px;
             overflow-x: hidden;
             position: relative;
         }
 
-        @keyframes fluidBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- IMMERSIVE WATER RIPPLE ANIMATION LAYER (Visible on load) --- */
-        .water-ripple-layer {
+        /* --- LUMOS PARTICLE FIELD (Enchanted Ambient Sparks) --- */
+        .lumos-field {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none;
-            z-index: 10; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .ripple-wave {
+        .spark {
             position: absolute;
-            border: 4px solid rgba(197, 160, 89, 0.4);
+            background: radial-gradient(circle, rgba(212,175,55,1) 0%, rgba(212,175,55,0) 70%);
             border-radius: 50%;
-            width: 10px;
-            height: 10px;
             opacity: 0;
-            animation: waterSurge 3.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            animation: floatSpark 8s infinite ease-in-out;
+        }
+        .spark:nth-child(1) { left: 15%; width: 6px; height: 6px; animation-delay: 1s; animation-duration: 10s; }
+        .spark:nth-child(2) { left: 45%; width: 4px; height: 4px; animation-delay: 3s; animation-duration: 7s; }
+        .spark:nth-child(3) { left: 80%; width: 8px; height: 8px; animation-delay: 0s; animation-duration: 12s; }
+
+        @keyframes floatSpark {
+            0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
+            30% { opacity: 0.6; }
+            70% { opacity: 0.4; transform: translateY(30vh) translateX(30px) scale(1.2); }
+            100% { transform: translateY(-10vh) translateX(-20px) scale(0.3); opacity: 0; }
         }
 
-        .ripple-wave:nth-child(2) {
-            animation-delay: 0.4s;
-            border-color: rgba(30, 70, 49, 0.3);
-        }
-
-        .ripple-wave:nth-child(3) {
-            animation-delay: 0.8s;
-            border-color: rgba(197, 160, 89, 0.2);
-        }
-
-        @keyframes waterSurge {
-            0% {
-                width: 10px;
-                height: 10px;
-                opacity: 0.8;
-                box-shadow: inset 0 0 20px rgba(255,255,255,0.6);
-            }
-            100% {
-                width: 1200px;
-                height: 1200px;
-                opacity: 0;
-                transform: scale(2);
-                border-width: 1px;
-            }
-        }
-
-        /* --- MOBILE SCROLL ARCHITECTURE --- */
+        /* --- THE MACUSA SCROLL ARCHITECTURE --- */
         .scroll-outer-wrapper {
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
             z-index: 1;
             position: relative;
-            filter: drop-shadow(0 15px 35px rgba(30, 70, 49, 0.15));
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.85));
             margin: 0 auto;
+            perspective: 1000px;
         }
 
+        /* Heavy Mahogany & Brass Rollers */
         .scroll-roller {
-            height: 30px;
-            background: linear-gradient(180deg, #3A2D13 0%, #5C4724 25%, #A8833C 50%, #5C4724 75%, #231B0B 100%);
-            border-top: 1px solid rgba(255, 230, 170, 0.35);
-            border-bottom: 2px solid #1A1307;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 3px 8px rgba(0,0,0,0.3);
+            height: 36px;
+            background: linear-gradient(180deg, #1A1105 0%, #3D280E 30%, #5C3E17 50%, #3D280E 70%, #1A1105 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 2px solid #0A0702;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.5);
             position: relative;
             z-index: 3;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            transition: var(--wizard-transition);
         }
         
         .engraved-calligraphy {
             font-family: 'Amiri', serif;
-            font-size: 14px;
-            color: #FFFFE0;
-            opacity: 0.18;
+            font-size: 15px;
+            color: #FFF6D6;
+            opacity: 0.25;
             white-space: nowrap;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             user-select: none;
+            text-shadow: 0 0 4px rgba(212,175,55,0.5);
         }
 
+        /* Ornate Brass Finials (Scroll Ends) */
         .scroll-roller::before, .scroll-roller::after {
             content: '';
             position: absolute;
-            top: -6px; 
-            width: 16px; 
-            height: 42px;
-            background: radial-gradient(circle at center, #F3E0B5 0%, #C5A059 40%, #7A5E2A 85%, #423111 100%);
-            border: 1.5px solid #8E6E32;
-            border-radius: 4px;
+            top: -8px; 
+            width: 20px; 
+            height: 52px;
+            background: radial-gradient(circle at center, #FFEAA7 0%, #D4AF37 40%, #8A640F 85%, #3A2804 100%);
+            border: 2px solid #AA7C11;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
-        .scroll-roller::before { left: -8px; border-right: 2px double #4A3713; }
-        .scroll-roller::after { right: -8px; border-left: 2px double #4A3713; }
+        .scroll-roller::before { left: -10px; }
+        .scroll-roller::after { right: -10px; }
 
+        /* The Living Parchment Core with Organic Hand-Cut Deckled Edges */
         .scroll-inner-content {
-            background: linear-gradient(135deg, var(--pure-ivory) 0%, var(--soft-blush) 100%);
-            border-left: 1px solid rgba(197, 160, 89, 0.3);
-            border-right: 1px solid rgba(197, 160, 89, 0.3);
-            padding: 0 16px;
+            background: linear-gradient(to right, #DFCEB0, #F5E6C8 8%, #F5E6C8 92%, #DFCEB0);
+            box-shadow: inset 0 0 35px rgba(92, 62, 23, 0.35);
+            border-left: 1px solid #3D280E;
+            border-right: 1px solid #3D280E;
+            padding: 0 24px;
             max-height: 0px; 
             opacity: 0;
             overflow: hidden;
-            transition: max-height 5s var(--ease-scroll-graceful), opacity 3.5s var(--ease-scroll-graceful), padding 5s var(--ease-scroll-graceful);
+            transform: scaleY(0);
+            transform-origin: top center;
+            transition: max-height 2.5s cubic-bezier(0.66, 0, 0.2, 1), 
+                        opacity 1.5s ease-in, 
+                        transform 2.5s cubic-bezier(0.66, 0, 0.2, 1),
+                        padding 2.5s ease;
+            
+            /* Cinematic Deckled Edge Effect */
+            clip-path: polygon(
+                0% 0%, 100% 0%, 
+                99% 4%, 100% 8%, 98.8% 15%, 99.5% 25%, 99% 38%, 100% 50%, 98.9% 63%, 99.6% 78%, 98.7% 88%, 99.3% 95%, 100% 100%,
+                0% 100%, 
+                0.8% 96%, 0.2% 89%, 1.2% 76%, 0.4% 65%, 1% 52%, 0.3% 41%, 1.1% 29%, 0.5% 18%, 1.3% 9%, 0% 4%
+            );
         }
 
+        /* Script Spell trigger: Revelio! */
         .unrolled-state .scroll-inner-content {
-            max-height: 3800px;
+            max-height: 4000px;
             opacity: 1;
-            padding: 45px 16px;
+            transform: scaleY(1);
+            padding: 55px 24px;
         }
 
+        /* Fine Asymmetrical Framing Filigree Inside the Parchment */
         .scroll-inner-content::before {
             content: '';
             position: absolute;
-            top: 16px; right: 10px; bottom: 16px; left: 10px;
-            border: 1px solid var(--gold-leaf);
+            top: 20px; right: 16px; bottom: 20px; left: 16px;
+            border: 1px dashed rgba(170, 124, 17, 0.25);
             border-radius: 4px;
-            opacity: 0.2;
             pointer-events: none;
+            clip-path: polygon(
+                0% 0%, 100% 0%, 
+                99.5% 12%, 99.1% 32%, 99.6% 55%, 99.2% 79%, 100% 100%,
+                0% 100%, 
+                0.6% 82%, 0.3% 59%, 0.8% 37%, 0.4% 15%
+            );
         }
 
         .text-alignment-canvas {
             text-align: center;
         }
 
-        /* --- ROMANTIC TYPOGRAPHY COMPOSITIONS --- */
+        /* --- THE ALCHEMY CREST --- */
         .islamic-crest-svg {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 16px;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 20px;
             display: inline-block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            animation: goldenPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes goldenPulse {
+            0%, 100% { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) sepia(0); }
+            50% { filter: drop-shadow(0 0 10px rgba(212,175,55,0.6)) sepia(1); }
         }
 
         .blessing-banner {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: var(--gold-dark);
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
+        /* --- THE INK-BLEED APERECIUM EFFECT --- */
         .bismillah-container {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .arabic-bismillah {
             font-family: 'Amiri', serif;
-            font-size: 28px;
+            font-size: 32px;
             color: var(--botanical);
-            line-height: 1.1;
-            margin-bottom: 4px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            opacity: 0;
+            filter: blur(5px);
+            transition: all 2s ease-out 1s;
+        }
+
+        .unrolled-state .arabic-bismillah {
+            opacity: 1;
+            filter: blur(0);
         }
 
         .translation-sub {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
         }
 
         .hosts-group {
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 18px;
             color: var(--text-main);
         }
 
@@ -224,198 +237,245 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            margin: 6px 0;
+            margin: 8px 0;
         }
 
         .parent-name {
             font-weight: 700;
             color: var(--botanical);
             display: block;
+            letter-spacing: 0.5px;
         }
 
         .parent-connector {
             font-family: 'Great Vibes', cursive;
-            font-size: 24px;
-            color: var(--gold-leaf);
+            font-size: 26px;
+            color: var(--gold-dark);
             line-height: 0.8;
-            margin: 2px 0;
+            margin: 4px 0;
         }
 
         .conjunction {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 15px;
+            font-size: 16px;
             color: var(--gold-dark);
-            margin: 14px 0;
+            margin: 16px 0;
             display: block;
         }
 
         .invitation-statement {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--text-muted);
-            margin: 30px 0 15px 0;
+            margin: 35px 0 20px 0;
             font-weight: 500;
         }
 
+        /* --- THE SACRED NAMES DISPLAY --- */
         .names-display-box {
-            margin: 25px 0;
+            margin: 35px 0;
+            background: rgba(26, 60, 43, 0.03);
+            padding: 20px 10px;
+            border-radius: 8px;
+            border: 1px dashed rgba(170, 124, 17, 0.2);
         }
 
         .person-glorious-name {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-weight: 600;
-            font-size: 34px;
+            font-weight: 700;
+            font-size: 36px;
             color: var(--botanical);
             line-height: 1.2;
             display: block;
             letter-spacing: 0.5px;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+            transition: transform 0.4s ease;
+        }
+        .person-glorious-name:hover {
+            transform: scale(1.03);
+            color: #0d2318;
         }
 
         .relationship-line {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 12.5px;
+            font-size: 13px;
             color: var(--text-muted);
             display: block;
-            margin-top: 4px;
-            margin-bottom: 4px;
+            margin-top: 6px;
+            margin-bottom: 6px;
             letter-spacing: 0.5px;
-            line-height: 1.4;
         }
 
         .and-ornament {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 26px;
+            font-size: 32px;
             color: var(--gold-leaf);
-            margin: 8px 0;
+            margin: 10px 0;
             display: block;
         }
 
         .celebration-tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--gold-dark);
-            margin-top: 18px;
-            margin-bottom: 30px;
-            padding: 0 8px;
+            margin-top: 24px;
+            padding: 0 12px;
+            font-weight: 600;
         }
 
+        /* --- PARCHMENT SCRAP INTERIOR CARD --- */
         .quranic-centerpiece-card {
-            background: linear-gradient(180deg, rgba(232, 240, 236, 0.6) 0%, rgba(218, 232, 225, 0.4) 100%);
-            border-left: 2px solid var(--botanical);
-            border-right: 2px solid var(--botanical);
-            padding: 20px 15px;
-            margin: 35px 0;
-            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(219, 203, 175, 0.5) 0%, rgba(206, 187, 154, 0.4) 100%);
+            border-top: 1px solid rgba(170, 124, 17, 0.3);
+            border-bottom: 1px solid rgba(170, 124, 17, 0.3);
+            padding: 24px 18px;
+            margin: 40px 0;
+            border-radius: 4px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
         }
 
         .scholarly-arabic {
             font-family: 'Amiri', serif;
-            font-size: 24px;
+            font-size: 26px;
             color: var(--botanical);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .scholarly-translation {
             font-family: 'Playfair Display', serif;
-            font-size: 13.5px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
             font-style: italic;
+            font-weight: 600;
         }
 
         .scholarly-source {
-            font-size: 9px;
-            letter-spacing: 2px;
+            font-size: 9.5px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 14px;
             color: var(--gold-dark);
             font-weight: 700;
         }
 
+        /* --- CHRONOMANCER LOGISTICS --- */
         .logistics-title-bar {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
             color: var(--gold-dark);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .logistics-flex-row {
             display: flex;
             flex-direction: column;
-            background: rgba(232, 240, 236, 0.45);
-            border: 1px solid rgba(30, 70, 49, 0.06);
-            border-radius: 12px;
-            padding: 14px 0;
-            margin-bottom: 25px;
+            background: rgba(26, 60, 43, 0.05);
+            border: 1px solid rgba(26, 60, 43, 0.1);
+            border-radius: 4px;
+            padding: 18px 0;
+            margin-bottom: 30px;
         }
 
         .logistics-column-unit {
-            padding: 6px 0;
+            padding: 8px 0;
         }
         .logistics-column-unit:first-child {
-            border-bottom: 1px solid rgba(30, 70, 49, 0.1);
-            padding-bottom: 12px;
-            margin-bottom: 6px;
+            border-bottom: 1px dashed rgba(26, 60, 43, 0.15);
+            padding-bottom: 16px;
+            margin-bottom: 8px;
         }
 
         .logistics-column-unit h4 {
-            font-size: 10px;
+            font-size: 10.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .logistics-column-unit p {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--botanical);
         }
 
         .venue-wrapper {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 35px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 40px;
         }
         .venue-wrapper strong {
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 19px;
             color: var(--botanical);
             display: inline-block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
+        /* --- THE CHRONO-IGNITED MAP ENTRY (Enchanted Button) --- */
         .btn-maps {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            margin-top: 12px;
-            padding: 8px 16px;
-            border: 1px solid var(--gold-leaf);
+            gap: 6px;
+            margin-top: 16px;
+            padding: 11px 22px;
+            background: rgba(26, 60, 43, 0.04);
+            border: 1px solid var(--gold-dark);
             color: var(--gold-dark);
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 3px;
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 0.4s ease, border-color 0.4s ease;
         }
 
+        .btn-maps::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%; width: 0; height: 0;
+            background: radial-gradient(circle, rgba(212,175,55,1) 0%, rgba(170,124,17,1) 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.6s cubic-bezier(0.1, 0.8, 0.3, 1), height 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
+            opacity: 0;
+        }
+
+        .btn-maps:hover::before {
+            width: 250px;
+            height: 250px;
+            opacity: 1;
+            animation: runicGlow 1.5s infinite ease-in-out alternate;
+        }
+
+        .btn-maps:hover {
+            color: #FFFFFF;
+            border-color: var(--gold-leaf);
+            box-shadow: 0 0 15px rgba(212,175,55,0.4);
+        }
+
+        /* --- COATS OF ARMS (Heritage Section) --- */
         .heritage-section {
             display: flex;
             flex-direction: column;
-            gap: 22px;
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            padding-top: 20px;
-            margin-top: 30px;
+            gap: 28px;
+            border-top: 1px double rgba(170, 124, 17, 0.3);
+            padding-top: 26px;
+            margin-top: 35px;
         }
 
         .heritage-pillar {
@@ -424,11 +484,11 @@
         }
 
         .heritage-section h4 {
-            font-size: 10px;
-            letter-spacing: 2px;
+            font-size: 11px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--gold-dark);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
@@ -436,12 +496,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
 
         .heritage-section .patriarch, 
         .heritage-section .matriarch {
-            font-size: 14px;
+            font-size: 15.5px;
             font-weight: 700;
             color: var(--botanical);
         }
@@ -449,75 +509,130 @@
         .heritage-section .footer-ampersand {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 16px;
+            font-size: 18px;
             color: var(--gold-leaf);
             line-height: 1;
         }
 
         .geo-marker-tag {
-            font-size: 10.5px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 6px;
             font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         .blessing-closer {
-            margin-top: 40px;
+            margin-top: 45px;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--botanical);
-            line-height: 1.4;
-            padding: 0 10px;
+            line-height: 1.5;
+            padding: 0 16px;
+            font-weight: 600;
         }
 
+        /* --- THE PORTKEY CALL TO ACTION (Highly Enchanted) --- */
         .btn-action-container {
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .btn-celebratory {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 85%;
-            padding: 14px 0;
-            background: linear-gradient(135deg, var(--botanical) 0%, #2A5A41 100%);
-            color: var(--pure-ivory);
+            width: 90%;
+            padding: 16px 0;
+            background: linear-gradient(135deg, var(--botanical) 0%, #11281D 100%);
+            color: #FFF6D6;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 3px;
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-weight: 700;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(30, 70, 49, 0.15);
+            border: 1px solid var(--gold-leaf);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Dynamic Spell Ignition Background Layer */
+        .btn-celebratory::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%; width: 0; height: 0;
+            background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(26,60,43,0) 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .btn-celebratory:hover::before {
+            width: 350px;
+            height: 350px;
+        }
+
+        /* Glowing sheen passing through the Portkey */
+        .btn-celebratory::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -60%; width: 30%; height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            animation: portkeyGleam 4s infinite linear;
+        }
+
+        @keyframes portkeyGleam {
+            0% { left: -60%; }
+            20% { left: 140%; }
+            100% { left: 140%; }
+        }
+
+        @keyframes runicGlow {
+            0% { filter: drop-shadow(0 0 2px rgba(255,246,214,0.6)); }
+            100% { filter: drop-shadow(0 0 12px rgba(212,175,55,0.9)); }
+        }
+
+        .btn-celebratory:hover {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212,175,55,0.35);
+            color: #FFFFFF;
         }
     </style>
 </head>
 <body id="invitationBody">
 
-<!-- Splash Water Ripple Layer -->
-<div class="water-ripple-layer">
-    <div class="ripple-wave"></div>
-    <div class="ripple-wave"></div>
-    <div class="ripple-wave"></div>
+<!-- Ambient Wizarding Spark Field -->
+<div class="lumos-field">
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
 </div>
 
 <div class="scroll-outer-wrapper" id="royalScroll">
+    <!-- Top Wooden Roller -->
     <div class="scroll-roller">
         <span class="engraved-calligraphy" dir="rtl">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span>
     </div>
     
+    <!-- Unrolling Parchment Body with Deckled Cut -->
     <div class="scroll-inner-content">
         <div class="text-alignment-canvas">
             
+            <!-- Magic Crest Symbol -->
             <svg class="islamic-crest-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#C5A059"/>
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#D4AF37"/>
             </svg>
             
             <div class="blessing-banner">With The Blessings Of Allah</div>
             
             <div class="bismillah-container">
-                <div class="arabic-bismillah"><bdo dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</bdo></div>
+                <div class="arabic-bismillah"><bdo dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</bdo></div>
                 <div class="translation-sub">In the Name of Allah, the Most Compassionate, the Most Merciful</div>
             </div>
 
@@ -538,7 +653,7 @@
             </section>
 
             <p class="invitation-statement">cordially invite you to join them in celebrating the</p>
-            <h3 style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
+            <h3 style="font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--gold-dark);">Ring Ceremony of Their Beloved Children</h3>
             
             <main class="names-display-box">
                 <!-- Groom Information -->
@@ -555,7 +670,7 @@
             </main>
 
             <blockquote class="quranic-centerpiece-card">
-                <div class="scholarly-arabic"><bdo dir="rtl" lang="ar">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</bdo></div>
+                <div class="scholarly-arabic"><bdo dir="rtl" lang="ar">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</bdo></div>
                 <p class="scholarly-translation">"And He placed between you Mawaddah — deep affection — and Rahmah — mercy."</p>
                 <div class="scholarly-source">Surah Ar-Rum 30:21</div>
             </blockquote>
@@ -575,13 +690,13 @@
                 </div>
 
                 <div class="venue-wrapper">
-                    <div class="logistics-title-bar" style="margin-bottom: 4px;">Venue</div>
+                    <div class="logistics-title-bar" style="margin-bottom: 6px;">Venue</div>
                     <strong>Pramod Convention & Club Resort</strong><br>
                     Mahanadi Ring Road, Bidanashi, Chahta,<br>
                     Cuttack, Odisha – 753008<br>
                     
                     <a href="https://share.google/rs9P8jto8POCRXpUQ" class="btn-maps" target="_blank">
-                        📍 View On Google Maps
+                        📍 Reveal Map Location
                     </a>
                 </div>
             </section>
@@ -620,6 +735,7 @@
         </div>
     </div>
 
+    <!-- Bottom Wooden Roller -->
     <div class="scroll-roller">
         <span class="engraved-calligraphy" dir="rtl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
     </div>
@@ -627,9 +743,10 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
+        // Safe time delay for the enchantment script to take hold
         setTimeout(() => {
             document.getElementById('invitationBody').classList.add('unrolled-state');
-        }, 400); 
+        }, 600); 
     });
 </script>
 
